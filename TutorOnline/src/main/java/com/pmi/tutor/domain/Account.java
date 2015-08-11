@@ -21,16 +21,6 @@ public class Account {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	private String surname;
-
-	public String getName() {
-		return surname;
-	}
-
-	public void setName(String name) {
-		this.surname = name;
-	}
 	
 	
 	
