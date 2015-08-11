@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/WEB-INF/views/page/layout.jsp">
+
+		<put-attribute name="title" value="WorkToday" />
+		<put-attribute name="header" value="/WEB-INF/views/page/header.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/page/footer.jsp" />
+		<put-list-attribute name="jsLinks">
+
+		</put-list-attribute>
+		<put-list-attribute name="links">
+			<add-attribute type="string" value="/resources/css/reg.css" />
+			<add-attribute type="string" value="/resources/css/global.css" />
+		</put-list-attribute>
+
+	</definition>
+	<definition name="index" template="/WEB-INF/views/index.jsp">
+
+	</definition>
+<definition name="helloworld" template="/WEB-INF/views/helloworld.jsp">
+</definition>
+
+	<definition name="home" extends="baseLayout">
+
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="content" value="/WEB-INF/views/home.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute type="string" value="/resources/css/stylehome.css" />
+			<add-attribute type="string" value="/resources/css/global.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="admin" extends="baseLayout">
+
+		<put-attribute name="content" value="/WEB-INF/views/admin.jsp" />
+	</definition>
+	<definition name="task" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/task/task.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/task.css" type="string" />
+			<add-attribute value="/resources/css/global.css" type="string" />
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="myTask" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/task/myTask.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/task.css" type="string" />
+			<add-attribute value="/resources/css/global.css" type="string" />
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/doTask.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="task/editTask" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/task/editTask.jsp" />
+	</definition>
+	<definition name="createTask" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/task/createTask.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/global.css" />
+			<add-attribute value="/resources/css/createTask.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/BeatPicker.min.js" />
+			<add-attribute value="/resources/js/createTask.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="customLogin" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/customLogin.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/page/headerWithoutMenu.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/reg.css"></add-attribute>
+
+		</put-list-attribute>
+	</definition>
+
+	<definition name="registration/emailConfirmation" extends="baseLayout">
+
+		<put-attribute name="content"
+			value="/WEB-INF/views/registration/emailConfirmation.jsp" />
+	</definition>
+	<definition name="reg" extends="baseLayout">
+		<put-attribute name="title" value="Реєстрація" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/page/headerWithoutMenu.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/reg.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/reg.css"></add-attribute>
+
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.4.3.js" />
+			<add-attribute value="/resources/js/validation.js" />
+			
+		</put-list-attribute>
+	</definition>
+	<definition name="task/avaibleTask" extends="baseLayout">
+		<put-attribute name="content"
+			value="/WEB-INF/views/task/avaibleTask.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/taskSearch.css" />
+			<add-attribute value="/resources/css/global.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/taskSearch.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="upload" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/upload.jsp" />
+	</definition>
+	<definition name="photo" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/photo.jsp" />
+	</definition>
+	<definition name="editProfil" extends="baseLayout">
+		<put-attribute name="title" value="Editing" />
+		<put-attribute name="content" value="/WEB-INF/views/editProfil.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/EditProfile.css"></add-attribute>
+			<add-attribute value="/resources/css/global.css"></add-attribute>
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/BeatPicker.min.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="forgotPassword" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/forgotPassword.jsp" />
+	</definition>
+	<definition name="sendEnding" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/sendEnding.jsp" />
+	</definition>
+	<definition name="newPassword" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/newPassword.jsp" />
+	</definition>
+	<definition name="socreg" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/socreg.jsp" />
+	</definition>
+
+	<definition name="messageHistory" extends="baseLayout">
+		<put-attribute name="title" value="Повідомлення" />
+		<put-attribute name="content"
+			value="/WEB-INF/views/messages/messageHistory.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/messageHistory.css" />
+			<add-attribute value="/resources/css/global.css" type="string" />
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="userProfil" extends="baseLayout">
+		<put-attribute name="title" value="Editing" />
+		<put-attribute name="content" value="/WEB-INF/views/userProfil.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/global.css"></add-attribute>
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="dialogs" extends="baseLayout">
+
+		<put-attribute name="title" value="Повідомлення" />
+		<put-attribute name="content"
+			value="/WEB-INF/views/messages/dialogs.jsp" />
+		<put-list-attribute name="links">
+			<add-attribute value="/resources/css/messages.css"></add-attribute>
+			<add-attribute type="string" value="/resources/css/global.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="error404" template="/WEB-INF/views/errors/error404.jsp">
+
+
+	</definition>
+	<definition name="error403" template="/WEB-INF/views/errors/error403.jsp">
+
+
+	</definition>
+	<definition name="leaveFeedback" template="/WEB-INF/views/leaveFeedback.jsp">
+		<put-list-attribute name="jsLinks">
+			<add-attribute value="/resources/js/jquery-1.9.1.js" />
+			<add-attribute value="/resources/js/global.js" />
+		</put-list-attribute>
+
+	</definition>
+
+	<definition name="error" template="/WEB-INF/views/errors/error.jsp">
+
+	</definition>
+</tiles-definitions>
