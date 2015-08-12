@@ -36,7 +36,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 
 	@Size(min = 2, max = 35, message = "������� ���� ������� ���� �� {min} � {max}.")
 	@Column(name = "name")
@@ -59,7 +59,6 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	
 	@Column(name = "dob")
 	private Date dob;
 
@@ -83,18 +82,32 @@ public class User {
 	private String authority;
 
 	@Column(name = "enabled")
-	private boolean enabled;
+	private Boolean enabled;
 
 	@Column(name = "isEmailConfirm")
-	private boolean isEmailConfirm;
+	private Boolean isEmailConfirm;
 
 	@Column(name = "registration_date")
 	private Date registrationDate;
-	
-	
-	
 
-	
+	@Column(name = "tasks_done")
+	private Boolean tasksDone;
+
+	@Column(name = "tasks_paid")
+	private Integer tasksPaid;
+
+	@Column(name = "sex")
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+	@Column(name = "social_id")
+	private String socialId;
+
+	@Column(name = "average_rate")
+	private Double averageRate;
+
+	public enum Gender {
+		Male, Female, Unknown
+	}
 
 	public Date getRegistrationDate() {
 		return registrationDate;
@@ -104,55 +117,36 @@ public class User {
 		this.registrationDate = registrationDate;
 	}
 
-	public int getTasksDone() {
+	public Boolean getTasksDone() {
 		return tasksDone;
 	}
 
-	public void setTasksDone(int tasksDone) {
+	public void setTasksDone(Boolean tasksDone) {
 		this.tasksDone = tasksDone;
 	}
 
-	public int getTasksPaid() {
-		return tasksPaid;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setTasksPaid(int tasksPaid) {
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public void setIsEmailConfirm(Boolean isEmailConfirm) {
+		this.isEmailConfirm = isEmailConfirm;
+	}
+
+	public void setTasksPaid(Integer tasksPaid) {
 		this.tasksPaid = tasksPaid;
 	}
 
-	public void setEmailConfirm(boolean isEmailConfirm) {
-		this.isEmailConfirm = isEmailConfirm;
-	}
-
-	@Column(name = "tasks_done")
-	private int tasksDone;
-
-	@Column(name = "tasks_paid")
-	private int tasksPaid;
-
-	@Column(name = "sex")
-	@Enumerated(EnumType.STRING)
-	private Gender gender;
-	@Column(name = "social_id")
-	private String socialId;
-
-	@Column(name = "average_rate")
-	private double averageRate;
-
-	public double getAverageRate() {
-		return averageRate;
-	}
-
-	public void setAverageRate(double averageRate) {
+	public void setAverageRate(Double averageRate) {
 		this.averageRate = averageRate;
 	}
 
-	public boolean getIsEmailConfirm() {
+	public Boolean getIsEmailConfirm() {
 		return isEmailConfirm;
-	}
-
-	public void setIsEmailConfirm(boolean isEmailConfirm) {
-		this.isEmailConfirm = isEmailConfirm;
 	}
 
 	public Gender getGender() {
@@ -163,11 +157,7 @@ public class User {
 		this.gender = gender;
 	}
 
-	public enum Gender {
-		Male, Female, Unknown
-	}
-
-	public boolean getEnabled() {
+	public Boolean getEnabled() {
 		return enabled;
 	}
 
@@ -223,7 +213,7 @@ public class User {
 		this.aboutUser = aboutUser;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -281,14 +271,14 @@ public class User {
 
 	public String getFormatedDOB() {
 		SimpleDateFormat simple = new SimpleDateFormat("YYYY/MM/dd");
-		if(dob!=null)
-		return simple.format(dob);
+		if (dob != null)
+			return simple.format(dob);
 		else
 			return ("1995/20/07");
 	}
 
 	public String getTimeOnSite() {
-		
+
 		Date now = new Date();
 		long diffInMillies = now.getTime() - registrationDate.getTime();
 		List<TimeUnit> units = new ArrayList<TimeUnit>(
@@ -301,20 +291,26 @@ public class User {
 			milliesRest = milliesRest - diffInMilliesForUnit;
 			if (diff != 0) {
 				if (unit.name() == "DAYS") {
-					if(diff>=1&&diff<7)
-						switch((int)diff){
-						case 1: return "���� ����";
-						case 2: return "��� ��";
-						case 3: return "��� ��";
-						default: return diff  + " ���";
+					if (diff >= 1 && diff < 7)
+						switch ((int) diff) {
+						case 1:
+							return "���� ����";
+						case 2:
+							return "��� ��";
+						case 3:
+							return "��� ��";
+						default:
+							return diff + " ���";
 						}
-					if(diff>=7&&diff<30)
-						switch((int) diff/7){
-						case 1: return "���� �������";
-						default: return diff/7+" �����";
+					if (diff >= 7 && diff < 30)
+						switch ((int) diff / 7) {
+						case 1:
+							return "���� �������";
+						default:
+							return diff / 7 + " �����";
 						}
-					
-					if ( diff >= 30 &&diff < 360) {
+
+					if (diff >= 30 && diff < 360) {
 						switch ((int) diff / 30) {
 						case 1:
 							return "���� �����";
@@ -328,20 +324,22 @@ public class User {
 							return diff / 30 + " ������";
 						}
 					}
-					if(diff>=360)
-						switch((int) diff/360){
-						case 1: return "���� ��";
-						default:return diff/360+" ����";
+					if (diff >= 360)
+						switch ((int) diff / 360) {
+						case 1:
+							return "���� ��";
+						default:
+							return diff / 360 + " ����";
 						}
-				}
-				else return "���� ����";
+				} else
+					return "���� ����";
 				break;
 			}
 		}
-		if(registrationDate!=null)
-		return "� "+registrationDate.toString();
+		if (registrationDate != null)
+			return "� " + registrationDate.toString();
 		else
 			return "�� �������";
-			
+
 	}
 }
