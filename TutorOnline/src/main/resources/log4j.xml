@@ -22,7 +22,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.pmi.brick">
+	<logger name="com.pmi.tutor">
 		<level value="ALL" />
 		<appender-ref ref="console" />
 		<appender-ref ref="file" />

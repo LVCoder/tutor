@@ -6,44 +6,62 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<http auto-config="true">
+<!-- 	<http auto-config="true"> -->
 		
-		<logout logout-success-url="/" />
+<!-- 		<logout logout-success-url="/" /> -->
 		
-		<form-login 
-		login-page="/login" 
-	        default-target-url="/home" 
-		authentication-failure-url="/login?error" 
-		/>
+<!-- 		<form-login  -->
+<!-- 		login-page="/login"  -->
+<!-- 	        default-target-url="/home"  -->
+<!-- 		authentication-failure-url="/login?error"  -->
+<!-- 		/> -->
 	
-   <intercept-url pattern="/home" access="ROLE_USER,ROLE_ADMIN" />
-    <intercept-url pattern="/task/edit/**" access="ROLE_USER,ROLE_ADMIN" />
-     <intercept-url pattern="/task/take/**" access="ROLE_USER,ROLE_ADMIN" />
-     <intercept-url pattern="/task/changeTaskStatusToDone/**" access="ROLE_USER,ROLE_ADMIN" />
-     <intercept-url pattern="/task/changeTaskStatusToDone/**" access="ROLE_USER,ROLE_ADMIN" />
-     <intercept-url pattern="/task/setWorker/**" access="ROLE_USER,ROLE_ADMIN" />
-     <intercept-url pattern="/task/edit/**" access="ROLE_USER,ROLE_ADMIN" />
-      <intercept-url pattern="/task/create" access="ROLE_USER,ROLE_ADMIN" />
+<!--    <intercept-url pattern="/home" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--     <intercept-url pattern="/task/edit/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--      <intercept-url pattern="/task/take/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--      <intercept-url pattern="/task/changeTaskStatusToDone/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--      <intercept-url pattern="/task/changeTaskStatusToDone/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--      <intercept-url pattern="/task/setWorker/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--      <intercept-url pattern="/task/edit/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--       <intercept-url pattern="/task/create" access="ROLE_USER,ROLE_ADMIN" /> -->
     
-     <intercept-url pattern="/edit" access="ROLE_USER,ROLE_ADMIN" />
-    <intercept-url pattern="/admin" access="ROLE_ADMIN" />
-      <intercept-url pattern="/user/**" access="ROLE_USER,ROLE_ADMIN" />
-  <intercept-url pattern="/feedback/**" access="ROLE_USER,ROLE_ADMIN" />
-  <intercept-url pattern="/messages/**" access="ROLE_USER,ROLE_ADMIN"/>
-    <intercept-url pattern="/confirm/**" access="ROLE_USER,ROLE_ADMIN"/>
+<!--      <intercept-url pattern="/edit" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--     <intercept-url pattern="/admin" access="ROLE_ADMIN" /> -->
+<!--       <intercept-url pattern="/user/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--   <intercept-url pattern="/feedback/**" access="ROLE_USER,ROLE_ADMIN" /> -->
+<!--   <intercept-url pattern="/messages/**" access="ROLE_USER,ROLE_ADMIN"/> -->
+<!--     <intercept-url pattern="/confirm/**" access="ROLE_USER,ROLE_ADMIN"/> -->
     
     
+		
+<!-- 	</http> -->
+
+<!-- 	<authentication-manager> -->
+<!-- 		<authentication-provider> -->
+<!-- 		<password-encoder hash="md5"/> -->
+<!-- 			<jdbc-user-service data-source-ref="dataSource" -->
+<!-- 				authorities-by-username-query="SELECT email, authority FROM user WHERE email = ?" -->
+<!-- 				users-by-username-query="SELECT email, password, enabled FROM user WHERE email = ?" /> -->
+<!-- 		</authentication-provider> -->
+<!-- 	</authentication-manager> -->
+
+	<beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	</beans:bean>
+
+	<authentication-manager id="authenticationManager">
+		<authentication-provider user-service-ref="userDetailServiceImpl">
+			<password-encoder ref="bCryptPasswordEncoder"></password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+	<http use-expressions="true" auto-config="false"  authentication-manager-ref="authenticationManager">
+		<http-basic />
+		
+
+		
+		<intercept-url pattern="/public/**" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_TUTOR','ROLE_TUTEE', 'ROLE_ADMIN' )" />
 		
 	</http>
 
-	<authentication-manager>
-		<authentication-provider>
-		<password-encoder hash="md5"/>
-			<jdbc-user-service data-source-ref="dataSource"
-				authorities-by-username-query="SELECT email, authority FROM user WHERE email = ?"
-				users-by-username-query="SELECT email, password, enabled FROM user WHERE email = ?" />
-		</authentication-provider>
-	</authentication-manager>
 <beans:bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<beans:property name="location" value="/WEB-INF/jdbc.properties"/>

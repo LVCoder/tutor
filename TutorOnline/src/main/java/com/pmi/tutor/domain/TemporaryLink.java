@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.pmi.tutor.domain.User.Gender;
-
 @Entity
 @Table( name="temporary_link")
 public class TemporaryLink {

@@ -11,7 +11,7 @@
 		<mapping class="com.pmi.tutor.domain.Category" />
 		<mapping class="com.pmi.tutor.domain.Subject" />
 		<mapping class="com.pmi.tutor.domain.UserSubjectPrice"/>
-
+		<mapping class="com.pmi.tutor.domain.Role"/>
 	</session-factory>
 	
 </hibernate-configuration>

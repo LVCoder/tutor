@@ -24,7 +24,25 @@
 	
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
-
+		<context:property-placeholder location="classpath:email.properties" order="0" ignore-unresolvable="true" />
+		<context:property-placeholder location="classpath:system.properties" order="1" ignore-unresolvable="true" />
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${email.module.host}" />
+		<property name="protocol" value="${email.module.protocol}" />
+		<property name="defaultEncoding" value="${email.module.encoding}" />
+		<property name="port" value="${email.module.port}" />
+		<!-- <property name="name" value="${email.module.sender.name}"/> -->
+		<property name="username" value="${email.module.sender.email}" />
+		<property name="password" value="${email.module.sender.pass}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">${email.module.protocol}</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">false</prop>
+			</props>
+		</property>
+	</bean>
 				
 	
 

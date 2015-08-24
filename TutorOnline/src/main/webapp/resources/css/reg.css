@@ -1,0 +1,145 @@
+*{
+     margin: 0 0; 
+    font-family: 'Lato', sans-serif;
+}
+body{
+background: #f7fff9;   
+}
+header{
+ display: block;
+    width: 100%;
+    height: 10px;
+    background: #37a2ac;
+}
+.logo {
+    text-align: center;
+    color: darkgray;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    text-decoration: none;
+    font-weight: 300;
+    width: 400px;
+    clear: both;
+    margin-top: 100px;
+    padding-left: 10px;
+    
+}
+.logo img{
+    width:80px;
+    float: left;
+    display: block;
+   
+        
+}
+.logo span{
+  display: block;
+    float: left;
+     margin-top: 15px;
+    padding:0 10px;
+}
+.tut{
+ margin-left:-10px;   
+}
+
+form{
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width:500px;
+    border:none;
+}
+fieldset{
+     border: none; 
+    margin: 0 auto;
+}
+input{
+ width:270px;
+    float: left;
+    height: 30px;
+    margin-top:10px;
+    margin-right:-6px;
+    border: 1px solid #d8d7d7;
+    padding-left: 7px;
+    padding-right: -15px;
+    font-size: 17px;
+    
+    
+}
+input:focus{
+ box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+label{
+     font-size: 18px;
+    padding:5px 10px;
+    margin-top:12px;
+    float:left;
+}
+.createAc{
+ width:270px;
+    float: left;
+}
+button{
+ display: block;
+    margin: 0 auto;
+    width:210px;
+    padding: 9px 0;
+    border:none;
+    background: #37a2ac;
+    color:white;
+    border-radius: 17px;
+    font-size:16px;
+    font-weight: 400;
+}
+form a{   
+   width: 100%;
+    float: left;
+    text-align: center;
+    color:#607D8B;
+    font-size: 14px;
+    margin-top: 10px;
+}
+form a:after{
+     content: "";
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/facebook3.png");
+    position: absolute;
+    margin-left:5px;
+    margin-top: -3px;
+    display: inline-block;
+    
+}
+#pasRecovery{
+ float:left;
+ font-size: 12px;
+     text-align: left;
+    text-decoration: none;
+    color: gray;
+    margin-bottom:15px;
+}
+#pasRecovery:after{
+    content:"";
+    background-image: none;
+   
+    
+}
+#pasRecovery:before{
+    content: "";
+   width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+    background-image: url("../images/questions1.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+      
+}
+#pasRecovery:hover{
+     text-decoration: underline;
+}
