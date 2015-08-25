@@ -1,6 +1,6 @@
 function SignUpController($http, $scope, $rootScope,$location){
 	$scope.$on('$viewContentLoaded', function() {
-		toastr.error("Successsss");
+	
 	})
 	
 	$scope.signUp = function(){
