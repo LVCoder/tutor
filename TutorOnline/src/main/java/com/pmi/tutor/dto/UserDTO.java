@@ -1,30 +1,28 @@
 package com.pmi.tutor.dto;
 
+import java.util.Map;
+
 public class UserDTO {
 
 	private Boolean anonymous;
-	private Boolean enable;
-	private Boolean expired;
+	private Boolean enabled;
 	private String email;
-	private String firtsName;
+	private String firstName;
 	private String lastName;
 	private String username;
 	private String message;
+	private Map<String, Boolean> roles;
 
-	public UserDTO(Boolean anonymous, Boolean enable, Boolean expired, String email, String firtsName, String lastName,
-			String username, String message) {
+	public UserDTO(){};
+	
+	public UserDTO(String message,Boolean enable, Boolean anonymous) {
 		super();
 		this.anonymous = anonymous;
-		this.enable = enable;
-		this.expired = expired;
-		this.email = email;
-		this.firtsName = firtsName;
-		this.lastName = lastName;
-		this.username = username;
+		this.enabled = enable;
 		this.message = message;
 	}
-	
-	
+
+
 
 	public String getEmail() {
 		return email;
@@ -34,13 +32,19 @@ public class UserDTO {
 		this.email = email;
 	}
 
-	public String getFirtsName() {
-		return firtsName;
+
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirtsName(String firtsName) {
-		this.firtsName = firtsName;
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+
+
 
 	public String getLastName() {
 		return lastName;
@@ -66,20 +70,13 @@ public class UserDTO {
 		this.anonymous = anonymous;
 	}
 
-	public Boolean getEnable() {
-		return enable;
+
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setEnable(Boolean enable) {
-		this.enable = enable;
-	}
-
-	public Boolean getExpired() {
-		return expired;
-	}
-
-	public void setExpired(Boolean expired) {
-		this.expired = expired;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public String getMessage() {
@@ -88,6 +85,18 @@ public class UserDTO {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+
+
+	public Map<String, Boolean> getRoles() {
+		return roles;
+	}
+
+
+
+	public void setRoles(Map<String, Boolean> roles) {
+		this.roles = roles;
 	}
 
 }

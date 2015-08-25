@@ -52,7 +52,6 @@ main.service('SessionService', [ '$http', '$location', '$rootScope', function($h
 	};
 	this.getUserAuthenticated = function() {
 		if ($rootScope.user && $rootScope.user.email) {
-			console.log($rootScope.user.roles["ROLE_PAYED_USER"]);
 			return true;
 		} else {
 			console.log("getUser");
@@ -84,8 +83,8 @@ main.run(function($rootScope, $location, $http, SessionService) {
 	$rootScope.$on('$viewContentLoaded', function() {
 		delete $rootScope.error;
 	});
-	/*mainAccountsRequests.getUser($rootScope, $http, $location, null);
-	$rootScope.logout = function() {
+	mainAccountsRequests.getUser($rootScope, $http, $location, null);
+	/*$rootScope.logout = function() {
 		mainAccountsRequests.logout($rootScope, $http, $location);
 	}*/
 
@@ -97,27 +96,7 @@ main.controller('HomeController', HomeController);
 main.controller('SignUpController', SignUpController);
 main.controller('SignInController', SignInController);
 
-main.service('paymentVariablesService', function() {
-	var plan;
-	var setPlan = function(newObj) {
-		plan = newObj;
-	};
-	var getPlan = function() {
-		return plan;
-	};
-	var type;
-	var setType = function(newObj) {
-		type = newObj;
-	};
-	var getType = function() {
-		return type;
-	};
-	return {
-		setPlan : setPlan,
-		getPlan : getPlan,
-	};
 
-});
 
 
 
