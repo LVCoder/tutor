@@ -11,5 +11,12 @@
 		controller : SignUpController,
 		requireLogin : false,
 		adminPage : false
+	},
+	
+	"/sign_in" : {
+		templateUrl : "/public/partials/sign_in",
+		controller : SignInController,
+		requireLogin : false,
+		adminPage : false
 	}
  }

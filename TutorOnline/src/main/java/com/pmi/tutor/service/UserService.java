@@ -11,6 +11,14 @@ import javax.validation.ValidatorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AccountExpiredException;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,40 +30,45 @@ import com.pmi.tutor.domain.TemporaryLink;
 import com.pmi.tutor.domain.TemporaryLink.LinkType;
 import com.pmi.tutor.domain.User;
 import com.pmi.tutor.dto.CallResponce;
+import com.pmi.tutor.dto.SignInUserDTO;
 import com.pmi.tutor.dto.SignUpUserDTO;
+import com.pmi.tutor.dto.UserDTO;
 import com.pmi.tutor.util.LinkUtils;
 
 @Service("userService")
 public class UserService {
-	
+
 	@Autowired
 	@Qualifier("bCryptPasswordEncoder")
 	private PasswordEncoder passwordEncoder;
-	
+	@Autowired
+	@Qualifier("authenticationManager")
+	private AuthenticationManager authManager;
 	@Autowired
 	private RoleDAO roleDAO;
-	
+
 	@Autowired
 	private TemporaryLinkDAO temporaryLinkDAO;
 
 	@Autowired
 	private EmailService emailService;
-	
+
 	@Autowired
 	private UserDAO userDAO;
-	
+
 	@Value("${system.base_url}")
 	private String BASE_URL;
-	
-	private  ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+
+	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+
 	@Transactional
 	public CallResponce saveUser(SignUpUserDTO userDTO) {
 		CallResponce result = validate(userDTO);
-		if (result == null){
+		if (result == null) {
 			User user = transformDTOIntoUser(userDTO);
 			Validator validator = factory.getValidator();
 			Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
-			if (constraintViolations.isEmpty()){
+			if (constraintViolations.isEmpty()) {
 				TemporaryLink temporaryLink = new TemporaryLink();
 				temporaryLink.setCreationDate(new Date());
 				temporaryLink.setIsActive(true);
@@ -67,17 +80,17 @@ public class UserService {
 				sendSignUpConfirmEmail(temporaryLink.getLink(), user.getEmail());
 				result = new CallResponce();
 				result.setMessage("We sent confirmation link to your email, please check.");
-			}else {
+			} else {
 				result = new CallResponce();
 				result.setErrorMessage(constraintViolations.iterator().next().getMessage());
 			}
 		}
 		return result;
 	}
-	
+
 	private void sendSignUpConfirmEmail(String temporalLink, String email) {
-		String link = BASE_URL + "/sign_up/confirm/"+temporalLink;
-		String body = "<a href=\""+link+"\">Click here to confirm registration</a>";
+		String link = BASE_URL + "/sign_up/confirm/" + temporalLink;
+		String body = "<a href=\"" + link + "\">Click here to confirm registration</a>";
 		String subject = "Email confirmation";
 		emailService.sendHtmlEmail(email, subject, body);
 	}
@@ -93,22 +106,47 @@ public class UserService {
 		return result;
 	}
 
-	private CallResponce validate(SignUpUserDTO userDTO){
+	private CallResponce validate(SignUpUserDTO userDTO) {
 		CallResponce result = null;
-		if (userDTO.getPassword()==null||!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
+		if (userDTO.getPassword() == null || !userDTO.getPassword().equals(userDTO.getConfirmPassword())) {
 			result = new CallResponce();
 			result.setErrorMessage("Passwords do not match");
-		} else if (userDAO.fetchUserByEmail(userDTO.getEmail())!=null){
+		} else if (userDAO.fetchUserByEmail(userDTO.getEmail()) != null) {
 			result = new CallResponce();
 			result.setErrorMessage("User with such email already exist");
-			
-		}else if (userDAO.fetchUserByUsername(userDTO.getUsername())!=null){
+
+		} else if (userDAO.fetchUserByUsername(userDTO.getUsername()) != null) {
 			result = new CallResponce();
 			result.setErrorMessage("User with such username already exist");
-			
+
 		}
-        return result;
-		
+		return result;
+
+	}
+
+	public UserDTO autentificateUser(SignInUserDTO user) {
+		final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+				user.getEmail().trim(), user.getPassword());
+		Authentication authentication = null;
+		try {
+			authentication = this.authManager.authenticate(authenticationToken);
+
+		} catch (final DisabledException e) {
+			LOGGER.debug("Failed to authenticate : " + email);
+			return new UserDTO(null, null, "Please confirm your sign up using link in your email", true, false, true);
+		} catch (final BadCredentialsException e) {
+			LOGGER.debug("Failed to authenticate : " + email);
+			return new UserDTO(null, null, "Failed to obtain authentication, please check your credentials", true,
+					false, true);
+		} catch (final AccountExpiredException e) {
+			LOGGER.debug("Failed to authenticate : " + email);
+			return new UserDTO(null, null, "Your account has expired", true, true, true);
+		} catch (final AuthenticationException e) {
+			LOGGER.debug("Failed to authenticate : " + email);
+			return new UserDTO(null, null, "Failed to authenticate, please check your credentials", true, false, true);
+		}
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return transformAuthentcationToUserDTO(authentication);
 	}
 
 }

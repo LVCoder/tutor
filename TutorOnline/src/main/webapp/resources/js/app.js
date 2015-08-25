@@ -95,7 +95,7 @@ main.run(function($rootScope, $location, $http, SessionService) {
 
 main.controller('HomeController', HomeController);
 main.controller('SignUpController', SignUpController);
-
+main.controller('SignInController', SignInController);
 
 main.service('paymentVariablesService', function() {
 	var plan;
