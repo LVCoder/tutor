@@ -7,6 +7,7 @@
  <title>Tutoring Portal</title>
 
 <!-- Styles -->
+<link rel="stylesheet"  href="resources/css/bootstrap.css"/>
         <link rel="stylesheet"  href="resources/css/lightslider.css"/>
         <link rel="stylesheet"  href="resources/css/style.css"/>
     <link rel="stylesheet"  href="resources/css/reg.css"/>

@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
+
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -29,7 +31,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 
 	@Size(min = 2, max = 35, message = "First name should contains from {min} to {max} symbols")
 	@Column(name = "first_name")
@@ -60,8 +62,20 @@ public class User {
 	@Column(name = "username",unique = true)
 	private String username;
 	
+	@Column(name = "hourly_rate")
+	private Double hourlyRate;
+	
+	@Column(name = "experience")
+	private String experience;
+	
+	@Column(name = "others")
+	private String others;
+	
 	@ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
 	private Set<Role> roles = new HashSet<Role>();
+	
+	@ManyToMany(targetEntity = Subject.class, fetch = FetchType.LAZY)
+	private Set<Subject> subjects = new HashSet<Subject>();
 	
 	public Date getRegistrationDate() {
 		return registrationDate;
@@ -73,7 +87,21 @@ public class User {
 
 
 
-	public void setId(Integer id) {
+
+
+	public Set<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -89,13 +117,6 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 
 	public String getEmail() {
@@ -153,5 +174,31 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+	public Double getHourlyRate() {
+		return hourlyRate;
+	}
+
+	public void setHourlyRate(Double hourlyRate) {
+		this.hourlyRate = hourlyRate;
+	}
+
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
+	public String getOthers() {
+		return others;
+	}
+
+	public void setOthers(String others) {
+		this.others = others;
+	}
+	
+	
 
 }

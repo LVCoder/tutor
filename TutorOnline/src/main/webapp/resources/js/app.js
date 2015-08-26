@@ -33,34 +33,8 @@ var main = angular
 				});
 
 
-main.service('SessionService', [ '$http', '$location', '$rootScope', function($http, $location, $rootScope) {
-	var userIsAuthenticated = false;
-	this.setUserAuthenticated = function(value) {
-		userIsAuthenticated = value;
-	};
-	this.isAdmin = function() {
-		if ($rootScope.user && $rootScope.user.email) {
-			if ($rootScope.user.roles && $rootScope.user.roles["ROLE_ADMIN"]) {
-				console.log("is admin");
-				return true;
-			}
-		} else {
-			console.log($rootScope.user);
-		}
 
-		return false;
-	};
-	this.getUserAuthenticated = function() {
-		if ($rootScope.user && $rootScope.user.email) {
-			return true;
-		} else {
-			console.log("getUser");
-			mainAccountsRequests.getUser($rootScope, $http, $location);
-		}
-		return userIsAuthenticated;
-	};
-} ]);
-main.run(function($rootScope, $location, $http, SessionService) {
+main.run(function($rootScope, $location, $http) {
 	
 	toastr.options = {
 			"closeButton" : true,
@@ -84,9 +58,9 @@ main.run(function($rootScope, $location, $http, SessionService) {
 		delete $rootScope.error;
 	});
 	mainAccountsRequests.getUser($rootScope, $http, $location, null);
-	/*$rootScope.logout = function() {
+	$rootScope.logout = function() {
 		mainAccountsRequests.logout($rootScope, $http, $location);
-	}*/
+	}
 
 	
 
@@ -95,7 +69,7 @@ main.run(function($rootScope, $location, $http, SessionService) {
 main.controller('HomeController', HomeController);
 main.controller('SignUpController', SignUpController);
 main.controller('SignInController', SignInController);
-
+main.controller('ConfirmSignUpController', ConfirmSignUpController);
 
 
 

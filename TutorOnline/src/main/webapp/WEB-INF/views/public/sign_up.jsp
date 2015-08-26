@@ -2,8 +2,9 @@
   <a href="" class="logo">
        <span class="tut">Tutoring</span>  <img src="resources/images/logo.svg" alt="logo"> <span  class = "port">Portal</span>
     </a>
-   <form ng-submit="signUp();">
-       <fieldset class="inputs">
+
+   <form  class="reg-form" ng-submit="signUp();">
+       <fieldset class="inputs reg-fieldset">
        		<input type="text" id = "_first_name" ng-model="user.firtsName"><label for="_first_name">First Name</label>
        		<input type="text" id = "_last_name"  ng-model="user.lastName"><label for="_last_name">Last Name</label>
            <input type="email" id = "_email"  ng-model="user.email"><label for="_email">E-mail</label>

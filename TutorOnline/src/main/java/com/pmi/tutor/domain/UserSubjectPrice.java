@@ -16,7 +16,7 @@ public class UserSubjectPrice {
 	@Id
 	@GeneratedValue
 	@Column(name="id")
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "price")
 	private Double price;
@@ -29,11 +29,12 @@ public class UserSubjectPrice {
 	@JoinColumn(name = "sunbject_id")
 	private Subject subject;
 
-	public Integer getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

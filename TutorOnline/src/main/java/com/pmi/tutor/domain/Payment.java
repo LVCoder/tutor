@@ -18,7 +18,7 @@ public class Payment {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "amount")
 	private Double amount;
@@ -34,11 +34,13 @@ public class Payment {
 	@JoinColumn(name="to_user_id")
 	private User userTo;
 
-	public Integer getId() {
+
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
