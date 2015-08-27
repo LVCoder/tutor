@@ -42,7 +42,7 @@ header{
  margin-left:-10px;   
 }
 
-form{
+.reg-form{
 
     display: block;
     margin: 0 auto;
@@ -50,10 +50,15 @@ form{
     width:500px;
     border:none;
 }
-fieldset{
+.reg-fieldset{
      border: none; 
     margin: 0 auto;
 }
+
+.conf-fiedset{
+	padding-top:20px;
+}
+
 input{
  width:270px;
     float: left;

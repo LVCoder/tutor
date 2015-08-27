@@ -7,6 +7,7 @@
  <title>Tutoring Portal</title>
 
 <!-- Styles -->
+<link rel="stylesheet"  href="resources/css/bootstrap.css"/>
         <link rel="stylesheet"  href="resources/css/lightslider.css"/>
         <link rel="stylesheet"  href="resources/css/style.css"/>
     <link rel="stylesheet"  href="resources/css/reg.css"/>
@@ -25,6 +26,7 @@
 <script type="text/javascript" src="resources/js/homeController.js"></script>
 <script type="text/javascript" src="resources/js/signUpController.js"></script>
 <script type="text/javascript" src="resources/js/signInController.js"></script>
+<script type="text/javascript" src="resources/js/mainAccountRequests.js"></script>
 
 <script type="text/javascript" src="resources/js/routes.js"></script>
 <script type="text/javascript" src="resources/js/app.js"></script>

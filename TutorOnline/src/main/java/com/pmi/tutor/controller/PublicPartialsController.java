@@ -31,4 +31,8 @@ public class PublicPartialsController {
 	public String signIn(){
 		return "public/sign_in";
 	}
+	@RequestMapping(value = "public/partials/confirm_sign_up", method = RequestMethod.GET)
+	public String confirmSignUp(){
+		return "public/confirm_sign_up";
+	}
 }

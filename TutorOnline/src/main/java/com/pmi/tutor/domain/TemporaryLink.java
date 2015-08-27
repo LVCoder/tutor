@@ -20,7 +20,7 @@ public class TemporaryLink {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "link")
 	private String link;
@@ -43,11 +43,11 @@ public class TemporaryLink {
 		SIGN_UP_CONFIRM, FORGOT_PASSWORD;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
