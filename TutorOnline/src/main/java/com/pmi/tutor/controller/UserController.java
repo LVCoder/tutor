@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pmi.tutor.dto.CallResponce;
+import com.pmi.tutor.dto.SignInUserDTO;
 import com.pmi.tutor.dto.SignUpUserDTO;
 import com.pmi.tutor.service.UserService;
 
@@ -21,4 +22,9 @@ public class UserController {
 	public @ResponseBody CallResponce saveUser(@RequestBody SignUpUserDTO user){
 		return userService.saveUser(user);
 	}
+	 
+	 @RequestMapping(value="public/user/sign_in", method = RequestMethod.POST)
+		public @ResponseBody CallResponce autetificateUser(@RequestBody SignInUserDTO user){
+			return userService.autentificateUser(user);
+		}
 }
