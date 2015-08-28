@@ -27,6 +27,7 @@
 <script type="text/javascript" src="resources/js/signUpController.js"></script>
 <script type="text/javascript" src="resources/js/signInController.js"></script>
 <script type="text/javascript" src="resources/js/mainAccountRequests.js"></script>
+<script type="text/javascript" src="resources/js/userHomeController.js"></script>
 
 <script type="text/javascript" src="resources/js/routes.js"></script>
 <script type="text/javascript" src="resources/js/app.js"></script>

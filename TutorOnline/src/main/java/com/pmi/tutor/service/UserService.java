@@ -44,6 +44,7 @@ import com.pmi.tutor.domain.User;
 import com.pmi.tutor.domain.UserSubjectPrice;
 import com.pmi.tutor.dto.CallResponce;
 import com.pmi.tutor.dto.ConfirmSignUpUserDTO;
+import com.pmi.tutor.dto.EditUserDTO;
 import com.pmi.tutor.dto.SignInUserDTO;
 import com.pmi.tutor.dto.SignUpUserDTO;
 import com.pmi.tutor.dto.SubjectIdPricePair;
@@ -70,10 +71,10 @@ public class UserService {
 
 	@Autowired
 	private UserDAO userDAO;
-	
+
 	@Autowired
 	private SubjectDAO subjectDAO;
-	
+
 	@Autowired
 	private UserSubjectPriceDAO userSubjectPriceDAO;
 
@@ -158,29 +159,28 @@ public class UserService {
 			return new UserDTO("Please confirm your sign up using link in your email", true, true);
 		} catch (final BadCredentialsException e) {
 			LOGGER.debug("Failed to authenticate : " + user.getEmail());
-			return new UserDTO( "Failed to obtain authentication, please check your credentials", true,
-					true);
+			return new UserDTO("Failed to obtain authentication, please check your credentials", true, true);
 		} catch (final AuthenticationException e) {
 			LOGGER.debug("Failed to authenticate : " + user.getEmail());
-			return new UserDTO( "Failed to authenticate, please check your credentials", true, true);
+			return new UserDTO("Failed to authenticate, please check your credentials", true, true);
 		}
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		return transformAuthentcationToUserDTO(authentication);
 	}
-	
+
 	@Transactional
 	private UserDTO transformAuthentcationToUserDTO(final Authentication authentication) {
 		UserDTO userDTO = null;
 		if (authentication != null) {
 			final Object principal = authentication.getPrincipal();
 			if (principal instanceof String && ((String) principal).equals("anonymousUser")) {
-				return new UserDTO( "Anonymous", false, true);
+				return new UserDTO("Anonymous", false, true);
 			}
 			final UserDetails userDetails = (UserDetails) principal;
 			final User user = userDAO.fetchUserByEmail(userDetails.getUsername());
-			
 
-			if (userDetails.getAuthorities().contains(new SimpleGrantedAuthority(Role.RoleEnum.ROLE_ANONYMOUS.toString()))) {
+			if (userDetails.getAuthorities()
+					.contains(new SimpleGrantedAuthority(Role.RoleEnum.ROLE_ANONYMOUS.toString()))) {
 				if (!userDetails.isEnabled()) {
 					userDTO = new UserDTO();
 					userDTO.setEmail(userDetails.getUsername());
@@ -190,10 +190,10 @@ public class UserService {
 					userDTO.setMessage("Please, confirm your sign up");
 					userDTO.setFirstName(user.getFirstName());
 					userDTO.setLastName(user.getLastName());
-					
+
 					return userDTO;
 				}
-			} 
+			}
 			userDTO = new UserDTO();
 			userDTO.setEmail(userDetails.getUsername());
 			userDTO.setRoles(createRoleMap(userDetails));
@@ -202,40 +202,40 @@ public class UserService {
 			userDTO.setMessage("Success");
 			userDTO.setFirstName(user.getFirstName());
 			userDTO.setLastName(user.getLastName());
-			
+
 			return userDTO;
 		}
-		userDTO= new UserDTO();
+		userDTO = new UserDTO();
 		userDTO.setMessage("Failed to obtain authentication, please check your credentials");
 		userDTO.setEnabled(false);
 		userDTO.setAnonymous(false);
 		return userDTO;
 	}
-	
+
 	@Transactional
 	public UserDTO getUser(final Principal principal) {
 		UserDTO userDTO = new UserDTO();
 		if (principal != null) {
 			final User user = userDAO.fetchUserByEmail(principal.getName());
 			if (user != null) {
-				
-						userDTO = new UserDTO();
-						userDTO.setEmail(user.getEmail());
-						userDTO.setAnonymous(false);
-						userDTO.setEnabled(true);
-						userDTO.setRoles(createRoleMap(user));
-						userDTO.setFirstName(user.getFirstName());
-						userDTO.setLastName(user.getLastName());
-						
-						return userDTO;
-					
-				} 
 
-			return new UserDTO( "Anonymous", false, true);
+				userDTO = new UserDTO();
+				userDTO.setEmail(user.getEmail());
+				userDTO.setAnonymous(false);
+				userDTO.setEnabled(true);
+				userDTO.setRoles(createRoleMap(user));
+				userDTO.setFirstName(user.getFirstName());
+				userDTO.setLastName(user.getLastName());
+
+				return userDTO;
+
+			}
+
+			return new UserDTO("Anonymous", false, true);
 		}
 		return new UserDTO("Anonymous", false, true);
 	}
-	
+
 	private static Map<String, Boolean> createRoleMap(final User user) {
 		final Map<String, Boolean> roles = new HashMap<String, Boolean>();
 		for (final Role role : user.getRoles()) {
@@ -257,32 +257,32 @@ public class UserService {
 	@Transactional
 	public CallResponce confirmSignUp(ConfirmSignUpUserDTO userDTO, String token) {
 		CallResponce result = new CallResponce();
-		if (userDTO!=null&&token!=null){
+		if (userDTO != null && token != null) {
 			TemporaryLink temporaryLink = temporaryLinkDAO.fetchByLink(token);
-			if (temporaryLink!=null&&temporaryLink.getIsActive()){
+			if (temporaryLink != null && temporaryLink.getIsActive()) {
 				User user = temporaryLink.getUser();
-				if (userDTO.getWantLearn()){
+				if (userDTO.getWantLearn()) {
 					Role role = roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTEE);
 					user.getRoles().add(role);
 					List<Long> learnSubjectIds = userDTO.getLearnSubjectsIds();
-					if (learnSubjectIds!=null&&!learnSubjectIds.isEmpty()){
-						for (Long id:learnSubjectIds){
+					if (learnSubjectIds != null && !learnSubjectIds.isEmpty()) {
+						for (Long id : learnSubjectIds) {
 							Subject subject = subjectDAO.fetchById(Subject.class, id);
-							if (subject!=null){
+							if (subject != null) {
 								user.getSubjects().add(subject);
-								
+
 							}
 						}
 					}
 				}
-				if (userDTO.getWantTeach()){
+				if (userDTO.getWantTeach()) {
 					Role role = roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTOR);
 					user.getRoles().add(role);
 					List<SubjectIdPricePair> teachSubjects = userDTO.getTeachSubjectsIdPrice();
-					if (teachSubjects!=null&&!teachSubjects.isEmpty()){
-						for (SubjectIdPricePair teachSubject:teachSubjects){
+					if (teachSubjects != null && !teachSubjects.isEmpty()) {
+						for (SubjectIdPricePair teachSubject : teachSubjects) {
 							Subject subject = subjectDAO.fetchById(Subject.class, teachSubject.getSubjectId());
-							if (subject!=null){
+							if (subject != null) {
 								UserSubjectPrice userSubjectPrice = new UserSubjectPrice();
 								userSubjectPrice.setSubject(subject);
 								userSubjectPrice.setUser(user);
@@ -307,5 +307,51 @@ public class UserService {
 		return result;
 	}
 
+	@Transactional
+	public CallResponce updateUser(EditUserDTO userDTO, final Principal principal) {
+		CallResponce callResponce = new CallResponce();
 
+		if (userDTO != null) {
+			final User user = userDAO.fetchUserByEmail(principal.getName());
+			if (user != null) {
+				user.setFirstName(userDTO.getFirstName());
+				user.setLastName(userDTO.getLastName());
+				user.setExperience(userDTO.getExperience());
+				user.setUsername(userDTO.getUsername());
+				if (userDTO.getWantLearn()) {
+					Role role = roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTEE);
+					user.getRoles().add(role);
+					List<Long> learnSubjectIds = userDTO.getLearnSubjectsIds();
+					if (learnSubjectIds != null && !learnSubjectIds.isEmpty()) {
+						for (Long id : learnSubjectIds) {
+							Subject subject = subjectDAO.fetchById(Subject.class, id);
+							if (subject != null) {
+								user.getSubjects().add(subject);
+
+							}
+						}
+					}
+				}
+				if (userDTO.getWantTeach()) {
+					Role role = roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTOR);
+					user.getRoles().add(role);
+					List<SubjectIdPricePair> teachSubjects = userDTO.getTeachSubjectsIdPrice();
+					if (teachSubjects != null && !teachSubjects.isEmpty()) {
+						for (SubjectIdPricePair teachSubject : teachSubjects) {
+							Subject subject = subjectDAO.fetchById(Subject.class, teachSubject.getSubjectId());
+							if (subject != null) {
+								UserSubjectPrice userSubjectPrice = new UserSubjectPrice();
+								userSubjectPrice.setSubject(subject);
+								userSubjectPrice.setUser(user);
+								userSubjectPrice.setPrice(teachSubject.getPrice());
+								userSubjectPriceDAO.save(userSubjectPrice);
+							}
+						}
+					}										
+					userDAO.update(user);
+				}
+			}
+		}
+		return callResponce;
+	}
 }
