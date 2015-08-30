@@ -23,11 +23,25 @@ function ConfirmSignUpController($http, $scope, $rootScope,$location,$routeParam
 	$scope.$on('$viewContentLoaded', function() {
 		$scope.learnSelects = [];
 		$scope.teachSelects = [];
+		$scope.avatar_image = null;
 		$scope.wantLearn = false;
 		$scope.wantTeach= false;
 		getAllCategories();
 		
 	})
+	
+	$(function () {
+$('#institution').autocomplete({
+    serviceUrl: 'public/institution/autocomplete', // Страница для обработки запросов автозаполнения
+    minChars: 1,
+    maxHeight: 400,
+    width: 300,
+    onSelect: function(suggestion){ 
+    	
+    	 } // Callback функция, срабатывающая на выбор одного из предложенных вариантов,
+ 
+});
+});
 	
 	$scope.loadLearnSubjects = function(index){
 		$scope.learnSelects[index].subjects = $scope.learnSelects[index].selectedCategory.subjects;
@@ -61,6 +75,22 @@ function ConfirmSignUpController($http, $scope, $rootScope,$location,$routeParam
 		})
 	}
 	
+	$scope.fileChanged = function(element){
+		$scope.avatar_image = element.files[0];
+		var formData = new FormData();
+		formData.append('file', $scope.avatar_image);
+		$http({
+			method : 'POST',
+			url : 'public/user/avatar/save/'+$routeParams.token,
+			transformRequest: angular.identity,
+	        headers: {'Content-Type': undefined},
+			data: formData
+		}).success(function(result){
+			
+		})
+	
+	}
+	
 	$scope.confirmSignUp = function(){
 		var learnSubjectsIds = [];
 		for (i=0; i<$scope.learnSelects.length;i++){
@@ -78,7 +108,8 @@ function ConfirmSignUpController($http, $scope, $rootScope,$location,$routeParam
 				learnSubjectsIds: learnSubjectsIds,
 				teachSubjectsIdPrice: teachSubjectsIdPrice,
 				experience: $scope.experience,
-				others: $scope.others
+				others: $scope.others,
+				institution: $scope.institution
 		}
 		
 		$http({

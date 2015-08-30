@@ -71,6 +71,12 @@ public class User {
 	@Column(name = "others")
 	private String others;
 	
+	@Column(name = "avatar_path")
+	private String avatarPath;
+	
+	@Column(name = "institution")
+	private String institution;
+	
 	@ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
 	private Set<Role> roles = new HashSet<Role>();
 	
@@ -113,9 +119,6 @@ public class User {
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
 
 
 
@@ -197,6 +200,22 @@ public class User {
 
 	public void setOthers(String others) {
 		this.others = others;
+	}
+
+	public String getAvatarPath() {
+		return avatarPath;
+	}
+
+	public void setAvatarPath(String avatarPath) {
+		this.avatarPath = avatarPath;
+	}
+
+	public String getInstitution() {
+		return institution;
+	}
+
+	public void setInstitution(String institution) {
+		this.institution = institution;
 	}
 	
 	

@@ -25,6 +25,9 @@ public class Message {
 	@Column(name="creation_date")
 	private Date creationDate;
 	
+	@Column(name="is_readed")
+	private Boolean isReaded;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="from_user_id")
 	private User userFrom;
@@ -73,5 +76,14 @@ public class Message {
 	public void setUserTo(User userTo) {
 		this.userTo = userTo;
 	}
+
+	public Boolean getIsReaded() {
+		return isReaded;
+	}
+
+	public void setIsReaded(Boolean isReaded) {
+		this.isReaded = isReaded;
+	}
+	
 	
 }

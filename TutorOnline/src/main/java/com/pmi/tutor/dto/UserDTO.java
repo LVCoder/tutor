@@ -3,7 +3,7 @@ package com.pmi.tutor.dto;
 import java.util.Map;
 
 public class UserDTO {
-
+	private Long id;
 	private Boolean anonymous;
 	private Boolean enabled;
 	private String email;
@@ -23,6 +23,14 @@ public class UserDTO {
 	}
 
 
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getEmail() {
 		return email;

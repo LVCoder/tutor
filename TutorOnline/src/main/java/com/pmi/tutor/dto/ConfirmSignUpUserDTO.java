@@ -8,6 +8,7 @@ public class ConfirmSignUpUserDTO {
 	private Boolean wantTeach;
 	private String experience;
 	private String others;
+	private String institution;
 	private List<Long> learnSubjectsIds;
 	private List<SubjectIdPricePair> teachSubjectsIdPrice;
 	public Boolean getWantLearn() {
@@ -40,8 +41,14 @@ public class ConfirmSignUpUserDTO {
 	public void setLearnSubjectsIds(List<Long> learnSubjectsIds) {
 		this.learnSubjectsIds = learnSubjectsIds;
 	}
+	
 
-
+	public String getInstitution() {
+		return institution;
+	}
+	public void setInstitution(String institution) {
+		this.institution = institution;
+	}
 	public List<SubjectIdPricePair> getTeachSubjectsIdPrice() {
 		return teachSubjectsIdPrice;
 	}

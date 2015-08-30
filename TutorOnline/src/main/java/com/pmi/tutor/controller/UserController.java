@@ -4,13 +4,16 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.pmi.tutor.dto.AutocompleteDTO;
 import com.pmi.tutor.dto.CallResponce;
 import com.pmi.tutor.dto.CategoryDTO;
 import com.pmi.tutor.dto.ConfirmSignUpUserDTO;
@@ -20,37 +23,52 @@ import com.pmi.tutor.dto.UserDTO;
 import com.pmi.tutor.service.CategoryService;
 import com.pmi.tutor.service.UserService;
 
-@Controller
+@RestController
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
-	 @RequestMapping(value="public/user/sign_up", method = RequestMethod.POST)
-	public @ResponseBody CallResponce saveUser(@RequestBody SignUpUserDTO user){
+
+	@RequestMapping(value = "public/user/sign_up", method = RequestMethod.POST)
+	public @ResponseBody CallResponce saveUser(@RequestBody SignUpUserDTO user) {
 		return userService.saveUser(user);
 	}
-	 
-	 @RequestMapping(value="public/user/sign_in", method = RequestMethod.POST)
-		public @ResponseBody UserDTO saveUser(@RequestBody SignInUserDTO user){
-			return userService.autentificateUser(user);
-		} 
-	 @RequestMapping(value = "public/user", method = RequestMethod.GET)
-	 public @ResponseBody UserDTO getUser(Principal principal){
-		 return userService.getUser(principal);
-	 }
-	 
-	 @RequestMapping(value = "public/category/get_all", method = RequestMethod.GET)
-	 public @ResponseBody List<CategoryDTO> getAllCategories(){
-		 return categoryService.getAllCategories();
-	 }
-	 
-	 @RequestMapping(value = "public/user/confirm_sign_up/{token}", method = RequestMethod.POST)
-	 public @ResponseBody CallResponce confirmSignUp(@RequestBody ConfirmSignUpUserDTO userDTO,@PathVariable("token") String token ){
-		
-		 return userService.confirmSignUp(userDTO, token);
-	 }
+
+	@RequestMapping(value = "public/user/sign_in", method = RequestMethod.POST)
+	public  UserDTO saveUser(@RequestBody SignInUserDTO user) {
+		return userService.autentificateUser(user);
+	}
+
+	@RequestMapping(value = "public/user", method = RequestMethod.GET)
+	public UserDTO getUser(Principal principal) {
+		return userService.getUser(principal);
+	}
+
+	@RequestMapping(value = "public/category/get_all", method = RequestMethod.GET)
+	public @ResponseBody List<CategoryDTO> getAllCategories() {
+		return categoryService.getAllCategories();
+	}
+
+	@RequestMapping(value = "public/user/confirm_sign_up/{token}", method = RequestMethod.POST)
+	public @ResponseBody CallResponce confirmSignUp(
+			@RequestBody ConfirmSignUpUserDTO userDTO,
+			@PathVariable("token") String token) {
+
+		return userService.confirmSignUp(userDTO, token);
+	}
+
+	@RequestMapping(value = "public/user/avatar/save/{token}", method = RequestMethod.POST)
+	public @ResponseBody CallResponce saveAvatarWithToken(
+			@RequestParam(value = "file", required = false) final MultipartFile file,
+			@PathVariable("token") String token) {
+		return userService.saveAvatabWithToken(file,token);
+	}
+	
+	@RequestMapping(value = "public/institution/autocomplete", method = RequestMethod.GET, params={"query"})
+	public @ResponseBody AutocompleteDTO getInstitutionAutocomplete(@RequestParam(value = "query", required = false) String regexp ) {
+		return userService.getInstitutionByRegexp(regexp);
+	}
 }

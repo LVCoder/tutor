@@ -12,20 +12,25 @@
         <link rel="stylesheet"  href="resources/css/style.css"/>
     <link rel="stylesheet"  href="resources/css/reg.css"/>
     <link rel="stylesheet"  href="resources/toastr/toastr.min.css"/>
-
+    <link rel="stylesheet"  href="resources/css/autocomplete.css"/>
 <!-- Angular! -->
 
 <script type="text/javascript" src="resources/angularjs/angular.js"></script>
 <script type="text/javascript" src="resources/angularjs/angular-resource.js"></script>
 <script type="text/javascript" src="resources/angularjs/angular-route.js"></script>
+<script type="text/javascript" src="resources/angularjs/angular-file-model.js"></script>
+<script type="text/javascript" src="resources/angularjs/angular-websocket.js"></script>
 <script type="text/javascript" src="resources/jquery/jquery-2.1.4.min.js"></script>
-
+<script type="text/javascript" src="resources/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="resources/js/sockjs-0.3.4.js"></script>
+<script type="text/javascript" src="resources/js/stomp.min.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
 
 
 <script type="text/javascript" src="resources/js/homeController.js"></script>
 <script type="text/javascript" src="resources/js/signUpController.js"></script>
 <script type="text/javascript" src="resources/js/signInController.js"></script>
+<script type="text/javascript" src="resources/js/messagingController.js"></script>
 <script type="text/javascript" src="resources/js/mainAccountRequests.js"></script>
 
 <script type="text/javascript" src="resources/js/routes.js"></script>

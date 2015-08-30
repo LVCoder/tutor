@@ -1,5 +1,5 @@
 var main = angular
-		.module('main', [ 'ngRoute' ])
+		.module('main', [ 'ngRoute','file-model' ])
 		.config(
 				function($routeProvider, $httpProvider, $locationProvider, $provide) {
 					for ( var path in window.routes) {
@@ -30,6 +30,17 @@ var main = angular
 						$delegate.history = false;
 						return $delegate;
 					} ]);
+				}).directive('onFinishRender', function ($timeout) {
+				    return {
+				        restrict: 'A',
+				        link: function (scope, element, attr) {
+				            if (scope.$last === true) {
+				                $timeout(function () {
+				                    scope.$emit('ngRepeatFinished');
+				                });
+				            }
+				        }
+				    }
 				});
 
 
@@ -70,7 +81,7 @@ main.controller('HomeController', HomeController);
 main.controller('SignUpController', SignUpController);
 main.controller('SignInController', SignInController);
 main.controller('ConfirmSignUpController', ConfirmSignUpController);
-
+main.controller('MessagingController', MessagingController);
 
 
 

@@ -16,6 +16,10 @@
 	"/confirm_sign_up/:token" : {
 		templateUrl : "/public/partials/confirm_sign_up",
 		controller : ConfirmSignUpController,
+	},
+	"/messaging" : {
+		templateUrl : "protected/partials/messaging",
+		controller : MessagingController
 	}
 	
  }

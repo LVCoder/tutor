@@ -1,11 +1,15 @@
 package com.pmi.tutor.service;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.security.Principal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -29,6 +33,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pmi.tutor.dao.RoleDAO;
 import com.pmi.tutor.dao.SubjectDAO;
@@ -42,6 +47,7 @@ import com.pmi.tutor.domain.TemporaryLink;
 import com.pmi.tutor.domain.TemporaryLink.LinkType;
 import com.pmi.tutor.domain.User;
 import com.pmi.tutor.domain.UserSubjectPrice;
+import com.pmi.tutor.dto.AutocompleteDTO;
 import com.pmi.tutor.dto.CallResponce;
 import com.pmi.tutor.dto.ConfirmSignUpUserDTO;
 import com.pmi.tutor.dto.SignInUserDTO;
@@ -80,6 +86,8 @@ public class UserService {
 	@Value("${system.base_url}")
 	private String BASE_URL;
 
+	private static final String IMAGE_PATH = "/Tutor/images/avatars/";
+	
 	private static Logger LOGGER = Logger.getLogger(UserService.class);
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 
@@ -111,8 +119,8 @@ public class UserService {
 	}
 
 	private void sendSignUpConfirmEmail(String temporalLink, String email) {
-		String link = BASE_URL + "/confirm_sing_up/" + temporalLink;
-		String body = "<a href=\"" + link + "\">Click here to confirm registration</a>";
+		String link = BASE_URL + "/confirm_sign_up/" + temporalLink;
+		String body = "Here is a for confirmation your account <br>"+link;
 		String subject = "Email confirmation";
 		emailService.sendHtmlEmail(email, subject, body);
 	}
@@ -190,7 +198,7 @@ public class UserService {
 					userDTO.setMessage("Please, confirm your sign up");
 					userDTO.setFirstName(user.getFirstName());
 					userDTO.setLastName(user.getLastName());
-					
+					userDTO.setUsername(user.getUsername());
 					return userDTO;
 				}
 			} 
@@ -202,7 +210,7 @@ public class UserService {
 			userDTO.setMessage("Success");
 			userDTO.setFirstName(user.getFirstName());
 			userDTO.setLastName(user.getLastName());
-			
+			userDTO.setUsername(user.getUsername());
 			return userDTO;
 		}
 		userDTO= new UserDTO();
@@ -220,13 +228,14 @@ public class UserService {
 			if (user != null) {
 				
 						userDTO = new UserDTO();
+						userDTO.setId(user.getId());
 						userDTO.setEmail(user.getEmail());
 						userDTO.setAnonymous(false);
 						userDTO.setEnabled(true);
 						userDTO.setRoles(createRoleMap(user));
 						userDTO.setFirstName(user.getFirstName());
 						userDTO.setLastName(user.getLastName());
-						
+						userDTO.setUsername(user.getUsername());
 						return userDTO;
 					
 				} 
@@ -264,6 +273,7 @@ public class UserService {
 				if (userDTO.getWantLearn()){
 					Role role = roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTEE);
 					user.getRoles().add(role);
+					user.setInstitution(userDTO.getInstitution());
 					List<Long> learnSubjectIds = userDTO.getLearnSubjectsIds();
 					if (learnSubjectIds!=null&&!learnSubjectIds.isEmpty()){
 						for (Long id:learnSubjectIds){
@@ -294,6 +304,7 @@ public class UserService {
 					user.setExperience(userDTO.getExperience());
 					user.setOthers(userDTO.getOthers());
 				}
+				user.setEnabled(true);
 				userDAO.update(user);
 				temporaryLink.setIsActive(false);
 				temporaryLinkDAO.update(temporaryLink);
@@ -306,6 +317,80 @@ public class UserService {
 		}
 		return result;
 	}
+@Transactional
+	public CallResponce saveAvatabWithToken(MultipartFile file, String token) {
+		CallResponce result =null;
+		if (file!=null&&token!=null){
+			TemporaryLink temporaryLink = temporaryLinkDAO.fetchByLink(token);
+			if (temporaryLink!=null&&temporaryLink.getIsActive()){
+				User user = temporaryLink.getUser();
+				updateUserAvatar(file, user);
+				result = new CallResponce();
+				result.setMessage("Success");
+			}
+		}
+		if (result== null){
+			result = new CallResponce();
+			result.setErrorMessage("Error");
+		}
+		return result;
+	}
+	private  void updateUserAvatar(final MultipartFile file, final User user) {
+		if (file != null) {
+			if (!file.isEmpty()) {
+				String imagePath = null;
 
+				try {
+					final String filePath = System.getProperty("catalina.home");
+					imagePath = user.getAvatarPath();
+					if (imagePath == null || imagePath.isEmpty()) {
+						imagePath = IMAGE_PATH + UUID.randomUUID() + ".png";
+						user.setAvatarPath(imagePath);
+						userDAO.update(user);
+					}
+					if (imagePath != "") {
+
+						final byte[] bytes = file.getBytes();
+
+						final File imageDirectory = new File(filePath + IMAGE_PATH);
+						if (!imageDirectory.exists()) {
+							imageDirectory.mkdirs();
+						}
+						final File resultFile = new File(filePath + user.getAvatarPath());
+						if (!resultFile.exists()) {
+							resultFile.createNewFile();
+						}
+
+						final BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(resultFile));
+						stream.write(bytes);
+						stream.close();
+					} else {
+
+					}
+				} catch (final Exception e) {
+					LOGGER.warn("Failed to write file", e);
+				}
+			}
+		} else {
+			final File resultFile = new File(System.getProperty("catalina.home") + user.getAvatarPath());
+			if (resultFile.exists()) {
+				resultFile.delete();
+			}
+			user.setAvatarPath(null);
+		}
+	}
+
+	public AutocompleteDTO getInstitutionByRegexp(String regexp) {
+		AutocompleteDTO result = new AutocompleteDTO();
+		if (regexp!=null&&!regexp.isEmpty()){
+			result.setQuery(regexp);
+			result.setSuggestions(userDAO.getInstitutionsByRegexp(regexp));
+		}
+		return result;
+	}
+
+	public User getUser(String email) {
+		return userDAO.fetchUserByEmail(email);
+	}
 
 }

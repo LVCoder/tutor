@@ -21,11 +21,17 @@
        		<select ng-disabled="!wantLearn" class="form-control"  ng-model="learnSelect.selectedSubject"  ng-options="subject.name for subject in learnSelect.subjects"    >
        		
        		</select>
-       		</div>		
+       		</div>	
+       		
        </div>
        <div class= "row conf-fiedset">
-       <button type="button" ng-disabled="!wantLearn" ng-click="addLearnSubject();"> Add Subject</button>
+       <button type="button"  ng-click="addLearnSubject();"> Add Subject</button>
        </div>
+        <div class="row conf-fiedset">
+         <div class="col-md-6">
+       		<label>Institution<input  ng-disabled="!wantLearn" type="text" id="institution"> </label> 
+       		</div>	
+        </div>
       	</div>
        </fieldset>
           <fieldset class="conf-fiedset">
@@ -54,8 +60,9 @@
        <div class= "row conf-fiedset">
        <button type="button" ng-disabled="!wantTeach" ng-click="addTeachSubject();"> Add Subject</button>
        </div>
-       
+            
        </div>
+     
        </fieldset>
         <div class="row conf-fiedset">
           <div class = "col-sm-2"></div>
@@ -81,13 +88,17 @@
      </div>
      
      </div>
-       
-       <fieldset class="createAc conf-fiedset" >
+     <div  class="fileUpload btn btn-primary" style="margin-left:300px;">
+       <span>Upload Avatar</span>
+       <input type="file" accept="image/*" ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().fileChanged(this)" class="upload">
+    </div>
+      <div class="row conf-fiedset" style="margin-left:300px; margin-bottom: 30px;">
+       <fieldset class="createAc " >
        <button type="submit">
-           Create free account
+           Save changes
        </button>
-        <a href="#">Or login with facebook in one click</a>
        </fieldset>
+       </div>
       
        
    </form>
