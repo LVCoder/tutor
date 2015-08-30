@@ -71,7 +71,8 @@ main.controller('SignUpController', SignUpController);
 main.controller('SignInController', SignInController);
 main.controller('ConfirmSignUpController', ConfirmSignUpController);
 main.controller('UserHomeController', UserHomeController);
-main.controller('EditProfileController', EditProfileController)
+main.controller('EditProfileController', EditProfileController);
+main.controller('EditProfilePage', EditProfilePage);
 
 
 

@@ -24,8 +24,13 @@ window.routes = {
 	},
 	
 	"/edit" : {
-		templateUrl : "/protected/partials/edit",
+		templateUrl : "/protected/user/edit",
 		controller : EditProfileController,
+	},
+	
+	"/edit_profile" : {
+		templateUrl : "protected/user/edit_profile",
+		controller : EditProfilePage,
 	}
 
 }
