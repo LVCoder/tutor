@@ -7,7 +7,7 @@
        <fieldset class="inputs reg-fieldset">
            <input type="email" id = "_email" ng-model="signInUser.email"><label for="_email">E-mail</label>
            <input type="password" id = "_password" ng-model="signInUser.password"><label for="_password">Password</label>
-           <a href="forgotPassword.htm" id = "pasRecovery">Forgot your password?</a>
+           <a href="#/forgot_password" id = "pasRecovery">Forgot your password?</a>
        </fieldset>
        <fieldset class="createAc">
        <button type="submit">

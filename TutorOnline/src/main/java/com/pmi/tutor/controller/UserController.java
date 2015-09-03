@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.pmi.tutor.domain.User;
 import com.pmi.tutor.dto.AutocompleteDTO;
 import com.pmi.tutor.dto.CallResponce;
 import com.pmi.tutor.dto.CategoryDTO;
 import com.pmi.tutor.dto.ConfirmSignUpUserDTO;
+import com.pmi.tutor.dto.EditUserDTO;
 import com.pmi.tutor.dto.SignInUserDTO;
 import com.pmi.tutor.dto.SignUpUserDTO;
 import com.pmi.tutor.dto.UserDTO;
@@ -71,4 +73,36 @@ public class UserController {
 	public @ResponseBody AutocompleteDTO getInstitutionAutocomplete(@RequestParam(value = "query", required = false) String regexp ) {
 		return userService.getInstitutionByRegexp(regexp);
 	}
+
+	@RequestMapping(value = "protected/user/get", method = RequestMethod.GET)
+	public @ResponseBody EditUserDTO getEditUser(Principal principal) {
+		User user = userService.getUser(principal.getName());
+		return userService.getEditUser(user);
+	}
+	@RequestMapping(value = "protected/user/edit", method=RequestMethod.POST)
+	public CallResponce editUser(@RequestBody EditUserDTO editUserDTO, Principal principal){
+		User user = userService.getUser(principal.getName());
+		return userService.editUser(editUserDTO, user);
+	}
+	
+	@RequestMapping(value = "public/password/forgot", method=RequestMethod.POST)
+	public CallResponce editUser(@RequestBody UserDTO user){
+	
+		return userService.sendForgotPassword(user.getEmail());
+	}
+	
+	@RequestMapping(value = "public/password/change/{token}", method=RequestMethod.POST)
+	public CallResponce editUser(@RequestBody SignUpUserDTO user, @PathVariable("token") String token ){
+	
+		return userService.changePassword(user, token);
+	}
+	
+	@RequestMapping(value = "protected/user/avatar/change", method=RequestMethod.POST)
+	public void editUser(@RequestParam(value = "file", required = false) final MultipartFile file,Principal principal ){
+		User user = userService.getUser(principal.getName());
+		userService.updateUserAvatar(file,user);
+	}
+	
+	
+	
 }

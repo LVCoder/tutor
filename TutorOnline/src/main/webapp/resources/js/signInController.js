@@ -1,5 +1,9 @@
 function SignInController($http, $scope, $rootScope,$location){	
-	
+	$scope.$on('$viewContentLoaded', function() {
+		if ($rootScope.message){
+			toastr.success($rootScope.message)
+		}
+	})
 	$scope.signIn = function(){
 		$http({
 			method : 'POST',
@@ -22,7 +26,7 @@ function SignInController($http, $scope, $rootScope,$location){
 				} else if (data.enabled) {
 					toastr.clear();
 					console.log("User enabled auth " + data);
-					$location.path("/");
+					$location.path("/user_home");
 					//$rootScope.menu_path = "/protected/partials/user_navbar";
 					//$rootScope.home_path = "/protected/partials/home_content";
 					//$rootScope.settings_navbar_path = "protected/partials/settings_navbar";
@@ -38,10 +42,10 @@ function SignInController($http, $scope, $rootScope,$location){
 					$rootScope.authenticated = false;
 					$rootScope.error = true;
 					$rootScope.error_message = data.message;
+			
 					toastr["error"](data.message, 'Error');
 				}
-			}
-			$scope.button_disable = false;
+			}$scope.button_disable = false;
 		}).error(function(){
 			toastr.error('Failed request to server');
 		})

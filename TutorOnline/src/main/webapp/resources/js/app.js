@@ -83,5 +83,9 @@ main.controller('SignInController', SignInController);
 main.controller('ConfirmSignUpController', ConfirmSignUpController);
 main.controller('MessagingController', MessagingController);
 
+main.controller('UserHomeController', UserHomeController);
+main.controller('EditProfileController', EditProfileController);
+main.controller('ForgotPasswordController', ForgotPasswordController);
+
 
 

@@ -80,7 +80,7 @@ public class User {
 	@ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
 	private Set<Role> roles = new HashSet<Role>();
 	
-	@ManyToMany(targetEntity = Subject.class, fetch = FetchType.LAZY)
+	@ManyToMany(targetEntity = Subject.class, fetch = FetchType.EAGER)
 	private Set<Subject> subjects = new HashSet<Subject>();
 	
 	public Date getRegistrationDate() {

@@ -11,6 +11,7 @@ public class UserDTO {
 	private String lastName;
 	private String username;
 	private String message;
+	private String avatarPath;
 	private Map<String, Boolean> roles;
 
 	public UserDTO(){};
@@ -106,5 +107,15 @@ public class UserDTO {
 	public void setRoles(Map<String, Boolean> roles) {
 		this.roles = roles;
 	}
+
+	public String getAvatarPath() {
+		return avatarPath;
+	}
+
+	public void setAvatarPath(String avatarPath) {
+		this.avatarPath = avatarPath;
+	}
+
+
 
 }

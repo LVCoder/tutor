@@ -25,7 +25,7 @@ public class EmailService {
 		try {
 			final MimeMessage message = mailSender.createMimeMessage();
 			message.setHeader(HEADER_PARAM, ENCODING_OPTIONS);
-			message.setFrom(new InternetAddress("StudioNinja"));
+			message.setFrom(new InternetAddress("Tutor_Online"));
 			message.saveChanges();
 			final MimeMessageHelper helper = new MimeMessageHelper(message);
 			helper.setTo(to);

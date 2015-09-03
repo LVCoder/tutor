@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -50,9 +51,12 @@ import com.pmi.tutor.domain.UserSubjectPrice;
 import com.pmi.tutor.dto.AutocompleteDTO;
 import com.pmi.tutor.dto.CallResponce;
 import com.pmi.tutor.dto.ConfirmSignUpUserDTO;
+import com.pmi.tutor.dto.EditUserDTO;
 import com.pmi.tutor.dto.SignInUserDTO;
 import com.pmi.tutor.dto.SignUpUserDTO;
+import com.pmi.tutor.dto.SubjectDTO;
 import com.pmi.tutor.dto.SubjectIdPricePair;
+import com.pmi.tutor.dto.SubjectPriceDTO;
 import com.pmi.tutor.dto.UserDTO;
 import com.pmi.tutor.util.LinkUtils;
 
@@ -236,6 +240,7 @@ public class UserService {
 						userDTO.setFirstName(user.getFirstName());
 						userDTO.setLastName(user.getLastName());
 						userDTO.setUsername(user.getUsername());
+						userDTO.setAvatarPath(user.getAvatarPath());
 						return userDTO;
 					
 				} 
@@ -244,6 +249,8 @@ public class UserService {
 		}
 		return new UserDTO("Anonymous", false, true);
 	}
+	
+	
 	
 	private static Map<String, Boolean> createRoleMap(final User user) {
 		final Map<String, Boolean> roles = new HashMap<String, Boolean>();
@@ -335,7 +342,7 @@ public class UserService {
 		}
 		return result;
 	}
-	private  void updateUserAvatar(final MultipartFile file, final User user) {
+	public  void updateUserAvatar(final MultipartFile file, final User user) {
 		if (file != null) {
 			if (!file.isEmpty()) {
 				String imagePath = null;
@@ -392,5 +399,184 @@ public class UserService {
 	public User getUser(String email) {
 		return userDAO.fetchUserByEmail(email);
 	}
+	
+	@Transactional
+	public EditUserDTO getEditUser(User user){
+		EditUserDTO result = new EditUserDTO();
+		result.setFirstName(user.getFirstName());
+		result.setLastName(user.getLastName());
+		result.setUsername(user.getUsername());
+		result.setExperience(user.getExperience());
+		result.setOthers(user.getOthers());
+		result.setInstitution(user.getInstitution());
+		if (user.getRoles().contains(roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTEE))){
+			result.setWantLearn(true);
+			Set<Subject> subjects = user.getSubjects();
+			List<SubjectDTO> subjectDTOs = new ArrayList<SubjectDTO>();
+			if(subjects!=null&&!subjects.isEmpty()){
+				for (Subject subject:subjects){
+					SubjectDTO subjectDTO = new SubjectDTO();
+					subjectDTO.setId(subject.getId());
+					subjectDTO.setName(subject.getName());
+					subjectDTOs.add(subjectDTO);
+				}
+			}
+			result.setLearnSubjects(subjectDTOs);
+		} else {
+			result.setWantLearn(false);
+		}
+		
+		if (user.getRoles().contains(roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTOR))){
+			result.setWantTeach(true);
+			
+			List<UserSubjectPrice> userSubjectPrices = userSubjectPriceDAO.findByUser(user);
+			if (userSubjectPrices!=null&&!userSubjectPrices.isEmpty()){
+			List<SubjectPriceDTO> subjectPriceDTOs = new ArrayList<SubjectPriceDTO>();
+				for (UserSubjectPrice userSubjectPrice : userSubjectPrices){
+				Subject subject =  userSubjectPrice.getSubject();
+				SubjectPriceDTO subjectPriceDTO = new SubjectPriceDTO();
+				SubjectDTO subjectDTO = new SubjectDTO();
+				subjectDTO.setId(subject.getId());
+				subjectDTO.setName(subject.getName());
+				subjectPriceDTO.setSubject(subjectDTO);
+				subjectPriceDTO.setPrice(userSubjectPrice.getPrice());
+				subjectPriceDTOs.add(subjectPriceDTO);
+				}
+				result.setTeachSubjects(subjectPriceDTOs);
+			}
+			
+		}else {
+			result.setWantTeach(false);
+		}
+		return result;
+	}
 
+	public CallResponce editUser(EditUserDTO userDTO, User user) {
+		CallResponce result = new CallResponce();
+		if (userDTO!=null&&user!=null){
+			Role roleTutee = roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTEE);
+				if (userDTO.getWantLearn()){
+					
+					user.getRoles().add(roleTutee);
+					user.setInstitution(userDTO.getInstitution());
+					List<SubjectDTO> learnSubjects = userDTO.getLearnSubjects();
+					if (learnSubjects!=null&&!learnSubjects.isEmpty()){
+						for (SubjectDTO subjectDTO:learnSubjects){
+							Subject subject = subjectDAO.fetchById(Subject.class, subjectDTO.getId());
+							if (subject!=null){
+								if (!user.getSubjects().contains(subject)){
+								user.getSubjects().add(subject);
+								}
+		
+							}
+						}
+					}
+				} else {
+					user.getRoles().remove(roleTutee);
+					user.getSubjects().clear();
+					user.setInstitution(null);
+				}
+				
+				Role roleTutor = roleDAO.fetchOrCreateRoleByName(RoleEnum.ROLE_TUTOR);
+				if (userDTO.getWantTeach()){
+				
+					user.getRoles().add(roleTutor);
+					List<SubjectPriceDTO> teachSubjects = userDTO.getTeachSubjects();
+					if (teachSubjects!=null&&!teachSubjects.isEmpty()){
+						for (SubjectPriceDTO teachSubject:teachSubjects){
+							Subject subject = subjectDAO.fetchById(Subject.class, teachSubject.getSubject().getId());
+							if (subject!=null){
+								
+								UserSubjectPrice userSubjectPrice = userSubjectPriceDAO.findByUserAndSubject(user, subject);
+								if (userSubjectPrice == null){
+									userSubjectPrice = new UserSubjectPrice();
+								userSubjectPrice.setSubject(subject);
+								userSubjectPrice.setUser(user);
+								}
+								userSubjectPrice.setPrice(teachSubject.getPrice());
+								userSubjectPriceDAO.saveOrUpdate(userSubjectPrice);
+							}
+						}
+					}
+					user.setExperience(userDTO.getExperience());
+					user.setOthers(userDTO.getOthers());
+					
+				}else {
+					user.getRoles().remove(roleTutor);
+					List<UserSubjectPrice> userSubjectPrices = userSubjectPriceDAO.findByUser(user);
+					if (userSubjectPrices!=null){
+						for (UserSubjectPrice userSubjectPrice : userSubjectPrices){
+							userSubjectPriceDAO.delete(userSubjectPrice);
+						}
+					}
+				}
+				user.setFirstName(userDTO.getFirstName());
+				user.setLastName(userDTO.getLastName());
+				user.setUsername(userDTO.getUsername());
+				userDAO.update(user);
+				result.setMessage("User profile was updated");
+		} else {
+			result.setErrorMessage("Incorect data");
+		}
+		return result;
+	}
+	
+	public CallResponce changePassword(){
+		return null;
+	}
+
+	@Transactional
+	public CallResponce sendForgotPassword(String email) {
+		User user = null;
+		if (email != null && !email.isEmpty()) {
+			user = userDAO.fetchUserByEmail(email);
+		}
+		CallResponce result = null;
+		if (user != null) {
+			TemporaryLink temporaryLink = new TemporaryLink();
+			temporaryLink.setCreationDate(new Date());
+			temporaryLink.setIsActive(true);
+			temporaryLink.setLink(LinkUtils.getHashLink());
+			temporaryLink.setType(LinkType.FORGOT_PASSWORD);
+			temporaryLink.setUser(user);
+			temporaryLinkDAO.save(temporaryLink);
+		    sendForgotPasswordEmail(temporaryLink.getLink(), email);
+			result = new CallResponce();
+			result.setMessage("Success, check your email");
+			
+
+		} else {
+			result = new CallResponce();
+			result.setErrorMessage("Wrong email");
+		}
+		return result;
+	}
+	
+	private void sendForgotPasswordEmail(String temporalLink, String email) {
+		String link = BASE_URL + "/change_password/" + temporalLink;
+		String body = "Here is a link for password changing <br>"+link;
+		String subject = "Password changing";
+		emailService.sendHtmlEmail(email, subject, body);
+	}
+
+	@Transactional
+	public CallResponce changePassword(SignUpUserDTO userDTO, String token) {
+		CallResponce result = new CallResponce();
+		if (userDTO!=null&&token!=null&&userDTO.getPassword().endsWith(userDTO.getConfirmPassword())){
+			TemporaryLink temporaryLink = temporaryLinkDAO.fetchByLink(token);
+			User user = temporaryLink.getUser();
+			if (user!=null&&temporaryLink.getIsActive()){
+				temporaryLink.setIsActive(false);
+				temporaryLinkDAO.update(temporaryLink);
+				user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+				userDAO.update(user);
+				result.setMessage("Password was changed");
+			} else {
+				result.setErrorMessage("Wrong link");
+			}
+		}else {
+			result.setErrorMessage("Wrong link");
+		}
+		return result;
+	}
 }

@@ -35,4 +35,14 @@ public class PublicPartialsController {
 	public String confirmSignUp(){
 		return "public/confirm_sign_up";
 	}
+	
+	@RequestMapping(value = "public/partials/forgot_password", method = RequestMethod.GET)
+	public String forgotPassword(){
+		return "public/forgot_password";
+	}
+	
+	@RequestMapping(value = "public/partials/change_password", method = RequestMethod.GET)
+	public String changePassword(){
+		return "public/change_password";
+	}
 }
