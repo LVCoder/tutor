@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,4 +63,20 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements UserDAO {
 		return (User) getSession().createQuery("select distinct u from User u , Message m where u!=:user and (m.userFrom=u or m.userTo = u) and m.creationDate = (select max(me.creationDate) from Message me where me.userTo = :user or  me.userFrom = :user)").setParameter("user", user).uniqueResult();
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> findUserByOneRegexp(String regexp){
+		return getSession().createSQLQuery("SELECT * FROM user WHERE (first_name REGEXP :regexp OR lastName REGEXP :regexp)AND enabled=1 ").addEntity(User.class).setParameter("regexp", regexp).list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> findUserByTwoRegexp(String regexpOne, String regexpTwo){
+		return getSession().createSQLQuery("SELECT * FROM user WHERE ((first_name REGEXP :regexpOne AND lastName REGEXP :regexpTwo) OR (lastName REGEXP :regexpOne AND first_name REGEXP :regexpTwo))AND enabled=1 ").addEntity(User.class).setParameter("regexpOne", regexpOne).setParameter("regexpTwo", regexpTwo).list();
+	}
+	
+	
 }

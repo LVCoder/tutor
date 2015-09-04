@@ -25,7 +25,7 @@
 <script type="text/javascript" src="resources/js/sockjs-0.3.4.js"></script>
 <script type="text/javascript" src="resources/js/stomp.min.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
-
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="resources/js/homeController.js"></script>
 <script type="text/javascript" src="resources/js/signUpController.js"></script>
@@ -35,6 +35,7 @@
 <script type="text/javascript" src="resources/js/userHomeController.js"></script>
 <script type="text/javascript" src="resources/js/editProfileController.js"></script>
 <script type="text/javascript" src="resources/js/forgotPasswordController.js"></script>
+<script type="text/javascript" src="resources/js/searchController.js"></script>
 <script type="text/javascript" src="resources/js/routes.js"></script>
 <script type="text/javascript" src="resources/js/app.js"></script>
   <script type="text/javascript" src="resources/js/lightslider.js"></script>
@@ -77,13 +78,8 @@
 </head>
 <!--  class="page-header-fixed" -->
 <body ng-app="main" class="blue" ng-cloak>
-	 <header ng-cloak>
-       <img src="resources/images/logo.svg" alt="logo">
-       <span>Tutoring Portal</span>
-       <nav>
-            <a href ="#/sign_in" class= "logIn">LogIn</a>
-            <a  href = "#/sign_up" class = "signIn">CREATE FREE ACCOUNT</a>
-        </nav>
+	 <header ng-include="header">
+       
     </header>
 	<div class="" ng-view></div>
 	 <footer>

@@ -26,8 +26,10 @@ public class WebSocketMessagingController {
 
 	@MessageMapping("/send_message")
 	public void greeting(MessageDTO message,Principal principal) throws Exception {
+		if (message!=null && message.getUserFromId()!=message.getUserToId()){
     messageService.saveMessage(message);
 	template.convertAndSend("/client/get_message"+message.getUserToId(),message );
+		}
 	}
 
 }

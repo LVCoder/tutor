@@ -16,4 +16,8 @@ public interface UserDAO extends GenericDAO<User> {
 
 	User findMainUser(User user);
 
+	List<User> findUserByOneRegexp(String regexp);
+
+	List<User> findUserByTwoRegexp(String regexpOne, String regexpTwo);
+
 }

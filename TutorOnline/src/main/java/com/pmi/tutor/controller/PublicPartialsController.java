@@ -45,4 +45,11 @@ public class PublicPartialsController {
 	public String changePassword(){
 		return "public/change_password";
 	}
+	
+	@RequestMapping(value = "public/partials/header", method = RequestMethod.GET)
+	public String getHeader(){
+		return "public/header";
+	}
+	
+	
 }

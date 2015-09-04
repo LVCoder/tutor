@@ -27,5 +27,15 @@ public class ProtectedPartialsController {
 	public String plainIndex() {
 		return "protected/messaging";
 	}
+	
+	@RequestMapping(value = "/protected/partials/search", method = RequestMethod.GET)
+	public String search() {
+		return "protected/search";
+	}
+	
+	@RequestMapping(value = "protected/partials/header", method = RequestMethod.GET)
+	public String getHeader(){
+		return "protected/header";
+	}
 
 }

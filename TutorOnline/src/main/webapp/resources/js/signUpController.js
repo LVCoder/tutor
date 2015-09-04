@@ -24,6 +24,7 @@ function ConfirmSignUpController($http, $scope, $rootScope,$location,$routeParam
 		$scope.learnSelects = [];
 		$scope.teachSelects = [];
 		$scope.avatar_image = null;
+		$scope.institution="";
 		$scope.wantLearn = false;
 		$scope.wantTeach= false;
 		getAllCategories();
@@ -119,6 +120,7 @@ $('#institution').autocomplete({
 		}).success(function(result){
 			if (result.message){
 			toastr.success(result.message);
+			$location.path('#/login')
 			} if (result.errorMessage){
 				toastr.error(result.errorMessage)
 			}

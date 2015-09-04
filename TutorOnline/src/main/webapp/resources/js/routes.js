@@ -43,6 +43,10 @@ window.routes = {
 	"/change_password/:token":{
 		templateUrl: "public/partials/change_password",
 		controller: ForgotPasswordController
+	}, 
+	"/search":{
+		templateUrl: "protected/partials/search",
+		controller: SearchController	
 	}
 
 }

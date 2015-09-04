@@ -29,7 +29,7 @@
        </div>
         <div class="row conf-fiedset">
          <div class="col-md-6">
-       		<label>Institution<input  ng-disabled="!wantLearn" type="text" id="institution"> </label> 
+       		<label>Institution<input  ng-disabled="!wantLearn" type="text" id="institution" ng-model="institution"> </label> 
        		</div>	
         </div>
       	</div>
