@@ -90,7 +90,7 @@ public class UserService {
 	@Value("${system.base_url}")
 	private String BASE_URL;
 
-	private static final String IMAGE_PATH = "/Tutor/images/avatars/";
+	private static final String IMAGE_PATH = "images/avatars/";
 	
 	private static Logger LOGGER = Logger.getLogger(UserService.class);
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -348,7 +348,7 @@ public class UserService {
 				String imagePath = null;
 
 				try {
-					final String filePath = System.getProperty("catalina.home");
+					final String filePath = System.getProperty("catalina.home")+"/webapps/";
 					imagePath = user.getAvatarPath();
 					if (imagePath == null || imagePath.isEmpty()) {
 						imagePath = IMAGE_PATH + UUID.randomUUID() + ".png";

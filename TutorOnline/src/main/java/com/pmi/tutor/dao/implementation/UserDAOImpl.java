@@ -1,6 +1,5 @@
 package com.pmi.tutor.dao.implementation;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.NoResultException;

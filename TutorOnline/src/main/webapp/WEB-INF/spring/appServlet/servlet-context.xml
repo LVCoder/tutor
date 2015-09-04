@@ -15,6 +15,7 @@
 	<!-- Всю статику (изображения, css-файлы, javascript) положим в папку webapp/resources 
 		и замаппим их на урл вида /resources/** -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/images/avatars**" location="/images/avatars/" />
 
 	<!-- Отображение видов на jsp-файлы, лежащие в папке /WEB-INF/views -->
 	
