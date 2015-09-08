@@ -5,6 +5,14 @@ public class CallResponce {
 	private String message;
 	private String errorMessage;
 	
+	public CallResponce(){
+		
+	}
+	
+	public CallResponce(String message, String errorMessage){
+		this.message = message;
+		this.errorMessage = errorMessage;
+	}
 	public String getMessage() {
 		return message;
 	}

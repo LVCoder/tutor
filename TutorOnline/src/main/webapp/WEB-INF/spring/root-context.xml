@@ -26,6 +26,7 @@
 	<import resource="data.xml" />
 		<context:property-placeholder location="classpath:email.properties" order="0" ignore-unresolvable="true" />
 		<context:property-placeholder location="classpath:system.properties" order="1" ignore-unresolvable="true" />
+		<context:property-placeholder location="classpath:facebook.properties" order="2" ignore-unresolvable="true" />
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="${email.module.host}" />
 		<property name="protocol" value="${email.module.protocol}" />

@@ -1,5 +1,13 @@
 function SignUpController($http, $scope, $rootScope,$location){
-
+	$scope.$on('$viewContentLoaded', function() {
+		if ($rootScope.facebookUser){
+			$scope.user = {};
+			$scope.user.firtsName = $rootScope.facebookUser.first_name;
+			$scope.user.lastName = $rootScope.facebookUser.last_name;
+			$scope.user.email = $rootScope.facebookUser.email;
+			$scope.user.socialId = $rootScope.facebookUser.id;
+		}
+	})
 	
 	$scope.signUp = function(){
 		$http({

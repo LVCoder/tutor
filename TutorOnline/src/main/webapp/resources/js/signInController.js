@@ -1,4 +1,4 @@
-function SignInController($http, $scope, $rootScope,$location){	
+function SignInController($http, $scope, $rootScope,$location, Facebook){	
 	$scope.$on('$viewContentLoaded', function() {
 		if ($rootScope.message){
 			toastr.success($rootScope.message)
@@ -51,5 +51,46 @@ function SignInController($http, $scope, $rootScope,$location){
 		})
 	}
 	
+	$scope.facebookClick  = function(){
+		FB.init({ 
+		      appId: '904548396248097',
+		      status: true, 
+		      cookie: true, 
+		      xfbml: true,
+		      version: 'v2.3'
+		    });
+		FB.login(function(data){ 
+			console.log(data);
+		$http.get('public/user/facebook_login/'+data.authResponse.userID).success(function(result){
+			if (result.message){
+				mainAccountsRequests.getUser($rootScope, $http);
+				$location.path('/user_home');
+			} else {
+				FB.api('/me',{
+					fields:'email,last_name,first_name'
+						}, function(response) {
+							if (response&&!response.error){
+			           $rootScope.facebookUser = response;
+			           $location.path("/sign_up");
+			           $scope.someFunction();
+							}
+			        });
+			}
+		})
+			
+		
+		}, {scope: 'email'});
+      
+	}
 	
+	$scope.someFunction = function(){
+		console.log("some function");
+		FB.init({ 
+		      appId: '904548396248097',
+		      status: true, 
+		      cookie: true, 
+		      xfbml: true,
+		      version: 'v2.3'
+		    });
+	}
 }

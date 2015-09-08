@@ -31,6 +31,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,6 +59,7 @@ import com.pmi.tutor.dto.SubjectDTO;
 import com.pmi.tutor.dto.SubjectIdPricePair;
 import com.pmi.tutor.dto.SubjectPriceDTO;
 import com.pmi.tutor.dto.UserDTO;
+import com.pmi.tutor.exception.GeneralServiceException;
 import com.pmi.tutor.util.LinkUtils;
 
 @Service("userService")
@@ -78,6 +80,8 @@ public class UserService {
 	@Autowired
 	private EmailService emailService;
 
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
 	@Autowired
 	private UserDAO userDAO;
 
@@ -138,15 +142,20 @@ public class UserService {
 		result.setEnabled(false);
 		result.setFirstName(userDTO.getFirtsName());
 		result.setLastName(userDTO.getLastName());
+		if (userDTO.getSocialId()==null){
 		result.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+		} else {
+			result.setPassword(passwordEncoder.encode(LinkUtils.getHashLink()));
+			result.setSocialId(userDTO.getSocialId());
+		}
 		result.setUsername(userDTO.getUsername());
 		return result;
 	}
 
 	private CallResponce validate(SignUpUserDTO userDTO) {
 		CallResponce result = null;
-		if (userDTO.getPassword() == null
-				|| !userDTO.getPassword().equals(userDTO.getConfirmPassword())) {
+		if (userDTO.getSocialId()==null&&(userDTO.getPassword() == null
+				|| !userDTO.getPassword().equals(userDTO.getConfirmPassword()))) {
 			result = new CallResponce();
 			result.setErrorMessage("Passwords do not match");
 		} else if (userDAO.fetchUserByEmail(userDTO.getEmail()) != null) {
@@ -641,5 +650,19 @@ public class UserService {
 
 		}
 		return result;
+	}
+
+	public CallResponce facebookLogin(String facebookId) {
+		if (facebookId==null){
+			throw new GeneralServiceException("Facebook id is null");
+		}
+		User user = userDAO.fetchUserBySocialId(facebookId);
+		if (user==null){
+		    return new CallResponce(null,"No such user");
+		}
+		UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
+		   Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+		   SecurityContextHolder.getContext().setAuthentication(authentication);
+		return new CallResponce("Success", null);
 	}
 }

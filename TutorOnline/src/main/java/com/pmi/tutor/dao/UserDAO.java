@@ -20,4 +20,6 @@ public interface UserDAO extends GenericDAO<User> {
 
 	List<User> findUserByTwoRegexp(String regexpOne, String regexpTwo);
 
+	User fetchUserBySocialId(String socialId);
+
 }

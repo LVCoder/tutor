@@ -20,6 +20,7 @@
 <script type="text/javascript" src="resources/angularjs/angular-route.js"></script>
 <script type="text/javascript" src="resources/angularjs/angular-file-model.js"></script>
 <script type="text/javascript" src="resources/angularjs/angular-websocket.js"></script>
+<script type="text/javascript" src="resources/angularjs/angular-facebook.js"></script>
 <script type="text/javascript" src="resources/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="resources/js/sockjs-0.3.4.js"></script>

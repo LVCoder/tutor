@@ -23,7 +23,6 @@ import org.hibernate.validator.constraints.Length;
 public class User {
 
 	public User() {
-		socialId = "none";
 		registrationDate = new Date();
 
 	}

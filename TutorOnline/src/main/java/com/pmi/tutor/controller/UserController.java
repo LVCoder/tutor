@@ -117,5 +117,8 @@ public class UserController {
 		SecurityContextHolder.getContext().setAuthentication(null);
 	}
 	
-	
+	@RequestMapping(value = "public/user/facebook_login/{facebookId}", method=RequestMethod.GET)
+	public CallResponce facebookLogin(@PathVariable("facebookId") String facebookId){
+		return userService.facebookLogin(facebookId);
+	}	
 }

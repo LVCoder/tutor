@@ -1,7 +1,7 @@
 var main = angular
-		.module('main', [ 'ngRoute','file-model' ])
+		.module('main', [ 'ngRoute','file-model','facebook' ])
 		.config(
-				function($routeProvider, $httpProvider, $locationProvider, $provide) {
+				function($routeProvider, $httpProvider, $locationProvider, $provide,FacebookProvider) {
 					for ( var path in window.routes) {
 						$routeProvider.when(path, window.routes[path]);
 					}
@@ -30,6 +30,7 @@ var main = angular
 						$delegate.history = false;
 						return $delegate;
 					} ]);
+					FacebookProvider.init('904548396248097');
 				}).directive('onFinishRender', function ($timeout) {
 				    return {
 				        restrict: 'A',

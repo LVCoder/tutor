@@ -7,6 +7,7 @@ public class SignUpUserDTO {
 	private String password;
 	private String confirmPassword;
 	private String email;
+	private String socialId;
 	
 	public String getFirtsName() {
 		return firtsName;
@@ -43,6 +44,12 @@ public class SignUpUserDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getSocialId() {
+		return socialId;
+	}
+	public void setSocialId(String socialId) {
+		this.socialId = socialId;
 	}
 	
 	

@@ -60,6 +60,7 @@
 		
 		<intercept-url pattern="/public/**" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_TUTOR','ROLE_TUTEE', 'ROLE_ADMIN' )" />
 		<intercept-url pattern="/images/**" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_TUTOR','ROLE_TUTEE', 'ROLE_ADMIN' )" />
+	<intercept-url pattern="/protected/**" access="hasAnyRole('ROLE_TUTOR','ROLE_TUTEE', 'ROLE_ADMIN' )" />
 	</http>
 
 <beans:bean id="propertyConfigurer"

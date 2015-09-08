@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
-import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +20,17 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements UserDAO {
 			return (User) getSession()
 					.createQuery("from User u where u.email=:email")
 					.setParameter("email", email).uniqueResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	@Override
+	@Transactional
+	public User fetchUserBySocialId(String socialId) {
+		try {
+			return (User) getSession()
+					.createQuery("from User u where u.socialId=:socialId")
+					.setParameter("socialId", socialId).uniqueResult();
 		} catch (NoResultException e) {
 			return null;
 		}
