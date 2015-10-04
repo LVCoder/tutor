@@ -1,0 +1,1681 @@
+*{
+     margin:0;
+    padding:0;
+     font-family: 'Lato', sans-serif;
+}
+a{
+ text-decoration: none;   
+}
+body{
+     width:100%;
+    margin:0 auto;
+    display: block;
+    max-width: 100%;
+    background:rgb(247, 255, 249); /*#f5f5f5;*/
+    overflow-x:hidden;
+    font-size:16px;
+}
+
+ header#mainHeader{
+     width:100%;
+    height: 60px;
+    background: #37a2ac;
+    display: block;
+    float:left;
+    
+}
+ header#mainHeader img{
+ width:60px;
+    height: 60px;
+    display: inline-block;
+    float:left;
+    margin-left:10px;
+}
+ header#mainHeader form{
+    margin-top: 20px;
+    margin-left: 20px;
+    float: left;
+}
+
+nav#mainNav{
+     width:100%;
+    display: block;
+    background: #298189;
+    float:left;
+    
+}
+ nav#mainNav .leftSide{
+      float:right;
+    margin-left: 40px;
+    color:white;
+    font-size:15px;
+    padding-right:14.41307578008915%;/* 194px;*/
+}
+ nav#mainNav .leftSide a{
+     padding:10px 20px;
+    text-decoration: none;
+    color:white;
+    float: left;
+    
+     
+}
+ nav#mainNav .leftSide a:hover{
+     background: #296c72;
+}
+#ava{
+ width:200px;  
+    margin: 0 auto;
+    display: block;
+}
+#content{
+ width:960px;
+ margin: 0 auto;
+    border-left:1px solid white;
+    border-right: 1px solid white;
+    display: block;  
+}
+.mainBlock{
+     width:900px;
+     background: white;
+    color:gray;
+    float: left;
+    padding:20px 30px;
+    border: 1px solid #d9d9d9;
+    border-top:none;
+        
+}
+.leftMain{
+     float:left;
+    width:500px; 
+    
+}
+.shortInfo{
+ width: 100%;
+    float: left;
+}
+.shortInfo a{
+     color:#858585;
+    font-size: 18px;
+    float: left;
+   
+    
+}
+#faculty{
+    margin-right: 0px;
+}
+#faculty:before{
+    content: "";
+   width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/notebook24.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: right; 
+}
+#university:before{
+    content: "";
+   width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/gallery1.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: left; 
+}
+.price{
+ float:left;
+    width: 100%;
+    display: block;
+     font-size: 17px;
+    color:#646464;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.price span{
+     font-size:30px;
+    color:#07d095;
+}
+.subjects{
+     max-width: 700px; 
+    border-bottom: 1px solid #c9c9c9;
+    padding-bottom: 50px;
+}
+.subjects p{
+ font-size:17px;  
+    margin-bottom: 15px;
+}
+.subjects a{
+    color:#298189;
+    background: #f4f5f5;
+    padding:7px 30px;
+  
+    
+}
+.subjects span{
+     background: #298189;
+    color:white;
+    margin-right: 10px;
+    padding:7px 10px;
+    margin-left:-30px;
+}
+.buttons{
+     margin-top: 30px;
+    
+}
+.buttons a{
+    padding:10px 20px;
+    color:#2DA37D;
+    margin:0 5px;
+    border: 1px solid #2DA37D;
+    border-radius: 10px;
+}
+#username{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+    color:#363636;
+}
+.infoBlock{
+     background: white;
+    padding:20px 30px;
+    margin-top:10px;
+    float:left;
+    width:57.29166666666667%;/*550px;*/
+    border: 1px solid #d9d9d9;
+    text-align:right;
+}
+.infoBlock h1{
+     color:#989494;
+     font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top:15px;
+}
+.infoBlock h2{
+     font-size:18px;
+}
+.expirienceInfo h1{
+     margin-top: -2px;   
+}
+.expirienceInfo h1:before{
+      content: "";
+   width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/info38.png");
+    margin-left: 5px;
+    display: block;
+    float: right; 
+}
+
+.workHistory h1:before{
+       content: "";
+   width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/briefcase.png");
+    margin-left: 5px;
+    display: block;
+    float: right;  
+}
+.educationInfo h1:before{
+      content: "";
+   width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/gallery1.png");
+    margin-left: 5px;
+    display: block;
+    float: right;   
+}
+.reviews{
+ background: white;
+    float:left;
+    width:35%;/*336px;*/
+    margin-left:1.041666666666667%;/*10px;*/
+    margin-top: 10px;
+        border: 1px solid #d9d9d9;
+}
+.reviews h1{
+     font-size:18px;
+    float:left;
+    margin:10px 10px;
+    margin-left: 15px;
+    
+}
+.starsBlock{
+     float:right;
+    margin:10px 10px
+}
+.reviews img{
+     width:20px;   
+}
+#comment{
+     display: block;
+    float:left;
+    padding:15px 15px;
+    width:80%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #c9c9c9;
+    
+}
+.commentStars img{
+     width:13px;   
+}
+.commentStars{
+ float:left;
+ margin-top: 15px;
+}
+#comment span{
+ float:right;
+ display: block;
+ margin-top:15px;
+    font-size:14px;
+}
+#search input{
+     height: 28px;
+    width:220px;
+    border-radius: 6px;
+    border: none;
+    padding-left:10px;
+    text-align:right;
+    padding-right:80px;
+}
+#search button{
+     color: #298189;
+        background: white;
+    border:none;
+    height:28px;
+    margin-left: -70px;
+    border:1px solid #c9c9c9;
+    border-radius: 6px;
+    width: 100px;
+    font-weight: 400;
+}
+.messageHead{
+     width:100%;
+    height:50px;
+    float:left;
+    display: block;
+    background: white;
+    border-bottom: 1px solid #d9d9d9;
+}
+.messageHeadMain{
+     width:900px;
+    margin: 0 auto;
+    
+}
+.messageHead h1{
+     font-size: 25px;
+    font-weight: 300;
+    padding: 5px 5px;
+    border-left:1px solid #d9d9d9;
+    float:right;
+    padding-left:130px;
+}
+.messageHead h2{
+     margin-right:20px;
+    float:right;
+    padding-top:10px;
+    font-size:20px;
+    font-weight: 400;
+}
+.messageHead a{
+     float:left;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 3px 7px;
+    
+    border: 1px solid #298189;
+    border-radius: 5px;
+    color:#298189;
+    font-size: 13px;
+}
+.messageHead a:before{
+        content: "";
+   width: 8px;
+    height: 8px;
+    background-size: 8px 8px;
+    background-image: url("../images/newMessage.png");
+   
+    margin-right: 5px;
+    margin-top: 3px;
+    display: block;
+    float: left;
+    
+}
+.sendersBlock{
+     float:right;
+    width:270px;
+    border:1px solid #d9d9d9;
+     border-top:none;
+    height:400px;
+    background: white;
+}
+.messagesBlock{
+     width:685px;
+   overflow-y: scroll;
+    height: 300px;
+    float:right;
+    background: white;
+    border:1px solid #d9d9d9;
+    border-right: none;
+     border-top:none;
+    
+}
+#sendMessageForm{
+     margin-top:10px;
+    margin-right: 5px;
+    float:right;
+    width:675px;
+    
+}
+#sendMessageForm textarea{
+     width:640px; 
+    height: 80px;
+    margin: 0 auto;
+    display: block;
+    resize: none;
+    border: 1px solid #d9d9d9;
+    padding:10px 10px;
+}
+#oneMessage{
+    width:100%;
+    height:90px;
+    border-bottom: 1px solid #d9d9d9;
+    display: block;
+    color:black;
+    
+}
+.sendersBlock img{
+    width:55px;
+    height: 55px;
+    border-radius: 3px;
+    float:right;
+    margin:10px 10px;
+        
+}
+
+#sendersName{
+   float:right;
+    margin-top:10px;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+#dateOfSending{
+   font-size:12px;
+    margin-top:13px;
+    float:left;
+    margin-left:10px;
+    color:grey;
+}
+#message{
+     float:left;
+    width:160px;
+    margin-left:10px;
+    font-size:13px;
+    margin-top:10px;
+  color:gray;
+}
+#oneMessage.active{
+   color:white;
+    background: #17929d;
+}
+#oneMessage.active #dateOfSending{
+ color:white;   
+}
+#oneMessage.active #message{
+ color:white;   
+}
+.sentMessage{
+    min-height: 60px;
+    width:90%;
+    margin:0 auto;
+    padding:10px 10px;
+    border-bottom: 1px solid #d9d9d9;
+}
+.messagesBlock img{
+     width:55px;  
+    border-radius: 3px;
+    float:right;
+    
+}
+#messageSender{
+     float:right;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size:14px;
+    color:#197e88;
+    
+}
+.messagesBlock #dateOfSending{
+        float:left;
+    margin-left:10px;
+    text-align: left;
+    display: block;
+    margin-top: 0px;
+}
+#messageText{
+     float:right;
+    width:520px;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 13px;
+    margin-top: 3px;
+}
+#sendMessageBut{
+ float: left;
+    margin-left: 20px;
+    margin-top:10px;
+    font-size:14px;
+    color:white;
+    background: #298189;
+    padding:6px 30px;
+    border:none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#attachFileBut{
+     border:none;
+    background: none;
+    cursor:pointer;
+    color:#298189;
+    float:right;
+    margin-top:16px;
+    margin-right: 30px;
+}
+#attachFileBut:before{
+     content:'';  
+    width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+    background-image: url("../images/attachment.png");
+    margin-right: 5px;
+    display: block;
+    float: left;  
+    
+}
+
+/*---------------------------------------Search Css--------------------------*/
+
+
+.leftSearch{
+    margin: 20px 10px;
+    width:650px;
+    float:left;
+    
+}
+#foundAmount{
+ float:left;
+    margin-left: 10px;
+  
+}
+
+.leftSearch select{
+ float:right;
+padding:7px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #c4c4c4;
+    color:#797979;
+}
+
+.foundItem{
+ background: white;
+ height:140px;
+ float: left;
+ border:1px solid #d9d9d9;
+ padding:10px 10px;
+ border-radius: 3px;
+ width:630px;
+ overflow: hidden;
+ padding-bottom: 10px;
+ margin-bottom: 10px;
+ text-align: right;
+}
+.foundItem img{
+     width:140px;
+     float: right;
+}
+#foundPersonName{
+     float: right;
+     margin-right: 10px;
+     font-size:18px;
+     font-weight: bold;
+}
+.imgBlock{
+     float: right;
+     margin-right: 20px;
+}
+.imgBlock img{
+     width:17px;
+    margin:2px 1px;
+}
+.hourlyRate{
+ float: left;
+ margin-left: 27px;
+ font-size:15px;
+ color:#a3a3a3;
+}
+.foundItem li{
+     display: inline;   
+}
+.foundItem ul{
+     float:left;
+    width:400px;
+    margin-left: 10px;
+}
+.universityInSearch{
+ float:left;
+    margin-top: 10px;
+    color:#a2a2a2;
+    font-size:13px;
+    display: block;
+}
+.shortAbout{
+ float: right;
+ width:350px;
+ margin-right: 10px;
+ font-size:14px;
+ color:gray;
+ height:85px;
+ overflow: hidden;
+}
+.hourlyRateAmount{
+     float: left;
+     display: block;
+     font-size:25px;
+     width:150px;
+     text-align: center;
+     color:#16BD87;
+}
+#subjects{
+     float:left;
+    margin-left:10px;
+    width:300px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+#subjects a{
+     padding:3px 7px;
+    font-weight: bold;
+    color:#298189;
+   
+}
+#subjects a:hover{
+     text-decoration: underline;
+}
+.rightSearch{
+    background: white;
+    width:260px;
+    float:left;
+    margin-top:20px;
+    border:1px solid #d9d9d9;
+    padding: 10px;
+}
+.rightSearch fieldset{
+     border:none; 
+    margin-bottom:10px;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 20px;
+    text-align:right;
+}
+#keywords{
+	margin-left:10px;
+	
+}
+.rightSearch input{
+     float: left;
+     display: block;
+     margin-left: 20px;
+     margin-top:5px;
+     padding: 5px 0px;
+     border: 1px solid #d9d9d9;
+     padding-left:10px;
+     padding-right: -10px;
+}
+.rightSearch label{
+     float: right;
+     margin:10px 10px;
+     color: gray;
+}
+.rightSearch div{
+     float: right;
+     width:100%;
+}
+
+fieldset.hourRate div{
+     width:100%;   
+}
+#keywords{
+    width: 90%;
+}
+#advancedSearchBut{
+     padding:8px 35px;
+     background: #298189;
+     color:white;
+     float: left;
+     font-size:15px;
+     border-radius: 5px;
+     cursor:pointer;
+}
+.rightSearch h2{
+     color:#464646;
+    font-size:16px;
+    font-weight: normal;
+}
+
+
+
+
+
+
+
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}
+@media only screen and (max-width:1024px){
+		.infoBlock{
+		width:55%;
+	}
+	.reviews{
+		width:35%;
+	}
+	
+}
+@media only screen and (max-width:815px){
+	
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+/* Styles */
+}
+/**********
+iPad 3
+**********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1524px) {
+/* Styles */
+.contentWrapper{
+	width:1500px;
+	margin:0 auto;
+}
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S4 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+/* Samsung Galaxy S5 ----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+
+
+#reg .logo {
+    text-align: center;
+    color: darkgray;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    text-decoration: none;
+    font-weight: 300;
+    width: 400px;
+    clear: both;
+    margin-top: 100px;
+    padding-left: 10px;
+    
+}
+#reg .logo img{
+    width:80px;
+    float: left;
+    display: block;
+   
+        
+}
+#reg .logo span{
+  display: block;
+    float: left;
+     margin-top: 15px;
+    padding:0 10px;
+}
+#reg .tut{
+ margin-left:-10px;   
+}
+
+#reg form{
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width:400px;
+    border:none;
+}
+#reg fieldset{
+     border: none; 
+    margin: 0 auto;
+}
+#reg input{
+ width:270px;
+    float: left;
+    height: 30px;
+    margin-top:10px;
+    margin-right:-6px;
+    border: 1px solid #d8d7d7;
+    padding-left: 7px;
+    padding-right: -15px;
+    font-size: 17px;
+    
+    
+}
+#reg input:focus{
+ box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+#reg label{
+     font-size: 18px;
+    padding:5px 10px;
+    margin-top:12px;
+    float:left;
+}
+#reg .createAc{
+ width:270px;
+    float: left;
+}
+#reg button{
+ display: block;
+    margin: 0 auto;
+    width:210px;
+    padding: 9px 0;
+    border:none;
+    background: #37a2ac;
+    color:white;
+    border-radius: 17px;
+    font-size:16px;
+    font-weight: 400;
+    cursor:pointer;
+}
+#reg form a{   
+   width: 100%;
+    float: left;
+    text-align: center;
+    color:#607D8B;
+    font-size: 14px;
+    margin-top: 10px;
+}
+#reg form a:after{
+     content: "";
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/facebook3.png");
+    position: absolute;
+    margin-left:5px;
+    margin-top: -3px;
+    display: inline-block;
+    
+}
+#reg #pasRecovery{
+ float:left;
+ font-size: 12px;
+     text-align: left;
+    text-decoration: none;
+    color: gray;
+    margin-bottom:15px;
+}
+#reg #pasRecovery:after{
+    content:"";
+    background-image: none;
+   
+    
+}
+#reg #pasRecovery:before{
+    content: "";
+   width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+    background-image: url("../images/questions1.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+      
+}
+#reg #pasRecovery:hover{
+     text-decoration: underline;
+}
+
+@media only screen and (max-width : 960px) {
+	.profile .mainBlock{
+		width:100%;
+	}
+	#content.profile{
+		width:100%;
+	}
+	.leftMain{
+		width:500px;
+	}
+	
+}
+
+/*______________________Переробити________________*/
+
+.shortInfo{
+     margin:0;
+    padding:0;
+     font-family: 'Lato', sans-serif;
+}
+a{
+ text-decoration: none;   
+}
+body{
+     width:100%;
+    margin:0 auto;
+    display: block;
+    max-width: 100%;
+    background:rgb(247, 255, 249); /*#f5f5f5;*/
+    overflow-x:hidden;
+    font-size:16px;
+}
+
+ header#mainHeader{
+     width:100%;
+    height: 60px;
+    background: #37a2ac;
+    display: block;
+    float:left;
+    
+}
+ header#mainHeader img{
+ width:60px;
+ height: 60px;
+ display: inline-block;
+ float: right;
+ margin-right: 16.64190193164933%;/*224px;*/
+}
+ header#mainHeader form{
+    margin-top: 20px;
+    margin-right: 20px;
+    float: right;
+}
+
+nav#mainNav{
+     width:100%;
+     display: block;
+     background: #298189;
+     float: right;
+}
+
+#ava{
+ width:200px;  
+    margin: 0 auto;
+    display: block;
+}
+#content{
+ width:960px;
+ margin: 0 auto;
+    border-left:1px solid white;
+    border-right: 1px solid white;
+    display: block;  
+}
+.mainBlock{
+     width:900px;
+     background: white;
+    color:gray;
+    float: left;
+    padding:20px 30px;
+    border: 1px solid #d9d9d9;
+    border-top:none;
+        
+}
+.leftMain{
+     float:left;
+    width:500px; 
+    
+}
+.shortInfo{
+ width: 100%;
+ float: right;
+}
+.shortInfo a{
+     color:#858585;
+     font-size: 18px;
+     float: right;
+}
+#faculty{
+    margin-left: 40px;
+}
+#faculty:before{
+    content: "";
+   width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/notebook24.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: left; 
+}
+#university:before{
+    content: "";
+   width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/gallery1.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: left; 
+}
+.price{
+ float:left;
+ width: 100%;
+ display: block;
+ font-size: 17px;
+ color:#646464;
+ font-weight: 500;
+ margin-top: 20px;
+ margin-bottom: 20px;
+ text-align: right;
+}
+.price span{
+     font-size:30px;
+    color:#07d095;
+}
+.subjects{
+     max-width: 700px; 
+    border-bottom: 1px solid #c9c9c9;
+    padding-bottom: 50px;
+}
+.subjects p{
+ font-size:17px;
+ margin-bottom: 15px;
+ text-align: right;
+}
+.subjects a{
+    color:#298189;
+    background: #f4f5f5;
+    padding:7px 30px;
+    float: right;
+}
+.subjects span{
+     background: #298189;
+    color:white;
+    margin-right: 10px;
+    padding:7px 10px;
+    margin-left:-30px;
+}
+.buttons{
+     margin-top: 30px;
+     float: right;
+}
+.buttons a{
+    padding:10px 20px;
+    color:#2DA37D;
+    margin:0 5px;
+    border: 1px solid #2DA37D;
+    border-radius: 10px;
+    float: right;
+}
+#username{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+    color:#363636;
+}
+
+.expirienceInfo h1{
+     margin-top: -2px;   
+}
+
+
+.starsBlock{
+     float: left;
+     margin:10px 10px
+
+}
+
+#comment{
+     display: block;
+     float: right;
+     padding:15px 15px;
+     width:80%;
+     text-align: right;
+     margin-bottom: 10px;
+     border-bottom: 1px solid #c9c9c9;
+}
+.commentStars img{
+     width:13px;   
+}
+.commentStars{
+ float: right;
+ margin-top: 15px;
+}
+#comment span{
+ float: left;
+ display: block;
+ margin-top:15px;
+ font-size:14px;
+}
+
+#search button{
+     color: #298189;
+     background: white;
+     border:none;
+     height:28px;
+     margin-right: -20px;
+     border:1px solid #c9c9c9;
+     border-radius: 6px;
+     width: 100px;
+     font-weight: 400;
+     /* float: right; */
+}
+.messageHead{
+     width:100%;
+    height:50px;
+    float:left;
+    display: block;
+    background: white;
+    border-bottom: 1px solid #d9d9d9;
+}
+.messageHeadMain{
+     width:900px;
+    margin: 0 auto;
+    
+}
+.messageHead h1{
+     font-size: 25px;
+    font-weight: 300;
+    padding: 5px 5px;
+    border-left:1px solid #d9d9d9;
+    float:right;
+    padding-left:130px;
+}
+.messageHead h2{
+     margin-right:20px;
+    float:right;
+    padding-top:10px;
+    font-size:20px;
+    font-weight: 400;
+}
+.messageHead a{
+     float:left;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 3px 7px;
+    
+    border: 1px solid #298189;
+    border-radius: 5px;
+    color:#298189;
+    font-size: 13px;
+}
+.messageHead a:before{
+        content: "";
+   width: 8px;
+    height: 8px;
+    background-size: 8px 8px;
+    background-image: url("../images/newMessage.png");
+   
+    margin-right: 5px;
+    margin-top: 3px;
+    display: block;
+    float: left
+    
+}
+.sendersBlock{
+     float:right;
+    width:270px;
+    border:1px solid #d9d9d9;
+     border-top:none;
+    height:400px;
+    background: white;
+}
+.messagesBlock{
+     width:685px;
+   overflow-y: scroll;
+    height: 300px;
+    float:right;
+    background: white;
+    border:1px solid #d9d9d9;
+    border-right: none;
+     border-top:none;
+    
+}
+#sendMessageForm{
+     margin-top:10px;
+    margin-right: 5px;
+    float:right;
+    width:675px;
+    
+}
+#sendMessageForm textarea{
+     width:640px; 
+    height: 80px;
+    margin: 0 auto;
+    display: block;
+    resize: none;
+    border: 1px solid #d9d9d9;
+    padding:10px 10px;
+}
+#oneMessage{
+    width:100%;
+    height:90px;
+    border-bottom: 1px solid #d9d9d9;
+    display: block;
+    color:black;
+    line-height: normal;
+    
+}
+.sendersBlock img{
+    width:55px;
+    height: 55px;
+    border-radius: 3px;
+    float:right;
+    margin:10px 10px;
+        
+}
+
+#sendersName{
+   float:right;
+    margin-top:10px;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+#dateOfSending{
+   font-size:12px;
+    margin-top:13px;
+    float:left;
+    margin-left:10px;
+    color:grey;
+}
+#message{
+     float:left;
+    width:160px;
+    margin-left:10px;
+    font-size:13px;
+    margin-top:10px;
+  color:gray;
+}
+#oneMessage.active{
+   color:white;
+    background: #17929d;
+}
+#oneMessage.active #dateOfSending{
+ color:white;   
+}
+#oneMessage.active #message{
+ color:white;   
+}
+.sentMessage{
+    min-height: 60px;
+    width:90%;
+    margin:0 auto;
+    padding:10px 10px;
+    border-bottom: 1px solid #d9d9d9;
+    -webkit-box-sizing:content-box;
+}
+.messagesBlock img{
+     width:55px;  
+    border-radius: 3px;
+    float:right;
+    
+}
+#messageSender{
+     float:right;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size:14px;
+    color:#197e88;
+    
+}
+.messagesBlock #dateOfSending{
+        float:left;
+    margin-left:10px;
+    text-align: left;
+    display: block;
+    margin-top: 0px;
+}
+#messageText{
+     float:right;
+    width:520px;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 13px;
+    margin-top: 3px;
+}
+#sendMessageBut{
+ float: left;
+    margin-left: 20px;
+    margin-top:10px;
+    font-size:14px;
+    color:white;
+    background: #298189;
+    padding:6px 30px;
+    border:none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#attachFileBut{
+     border:none;
+    background: none;
+    cursor:pointer;
+    color:#298189;
+    float:right;
+    margin-top:16px;
+    margin-right: 30px;
+}
+#attachFileBut:before{
+     content:'';  
+    width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+    background-image: url("../images/attachment.png");
+    margin-right: 5px;
+    display: block;
+    float: left;  
+    
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+#content{
+	width:95%;
+}
+.mainBlock{
+	width:95%;
+}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+/* Styles */
+}
+/**********
+iPad 3
+**********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1524px) {
+/* Styles */
+.contentWrapper{
+	width:1500px;
+	margin:0 auto;
+}
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S4 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+/* Samsung Galaxy S5 ----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+
+
+#reg .logo {
+    text-align: center;
+    color: darkgray;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    text-decoration: none;
+    font-weight: 300;
+    width: 400px;
+    clear: both;
+    margin-top: 100px;
+    padding-left: 10px;
+    
+}
+#reg .logo img{
+    width:80px;
+    float: left;
+    display: block;
+   
+        
+}
+#reg .logo span{
+  display: block;
+    float: left;
+     margin-top: 15px;
+    padding:0 10px;
+}
+#reg .tut{
+ margin-left:-10px;   
+}
+
+#reg form{
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width:400px;
+    border:none;
+}
+#reg fieldset{
+     border: none; 
+    margin: 0 auto;
+    min-width: 300px;
+}
+#reg input{
+ width:270px;
+    float: left;
+    height: 30px;
+    margin-top:10px;
+    margin-right:-6px;
+    border: 1px solid #d8d7d7;
+    padding-left: 7px;
+    padding-right: -15px;
+    font-size: 17px;
+    
+    
+}
+#reg input:focus{
+ box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+#reg label{
+     font-size: 18px;
+    padding:5px 10px;
+    margin-top:12px;
+    float:left;
+}
+#reg .createAc{
+ width:270px;
+    float: left;
+}
+#reg button{
+ display: block;
+    margin: 0 auto;
+    width:210px;
+    padding: 9px 0;
+    border:none;
+    background: #37a2ac;
+    color:white;
+    border-radius: 17px;
+    font-size:16px;
+    font-weight: 400;
+}
+#reg form a{   
+   width: 100%;
+    float: left;
+    text-align: center;
+    color:#607D8B;
+    font-size: 14px;
+    margin-top: 10px;
+}
+#reg form a:after{
+     content: "";
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/facebook3.png");
+    position: absolute;
+    margin-left:5px;
+    margin-top: -3px;
+    display: inline-block;
+    
+}
+#reg #pasRecovery{
+ float:left;
+ font-size: 12px;
+     text-align: left;
+    text-decoration: none;
+    color: gray;
+    margin-bottom:15px;
+}
+#reg #pasRecovery:after{
+    content:"";
+    background-image: none;
+   
+    
+}
+#reg #pasRecovery:before{
+    content: "";
+   width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+    background-image: url("../images/questions1.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+      
+}
+#reg #pasRecovery:hover{
+     text-decoration: underline;
+}
+
+@media only screen and (max-width : 960px) {
+	.profile .mainBlock{
+		width:100%;
+	}
+	#content.profile{
+		width:100%;
+	}
+	.leftMain{
+		width:400px;
+	}
+	
+}
+
+@media only screen and (max-width : 740px){
+		.infoBlock{
+			width:71%;
+			margin-left: 10%;
+			display:block;
+		}
+		.reviews{
+			width:80%;
+			margin-left: 10%;
+			display:block;
+			
+		}
+		.leftMain {
+		    width: 360px;
+		    font-size: 14px;
+}
+		#faculty, #university, .price, .subjects p{
+			font-size:15px;
+		}
+		.price span{
+		
+			font-size:25px;
+		}
+		#username{
+			font-size:20px;
+		}
+		#ava{
+			width:150px;
+		}
+	}
+	
+}

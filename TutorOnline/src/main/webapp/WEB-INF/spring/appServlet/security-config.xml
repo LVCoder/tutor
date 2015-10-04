@@ -53,7 +53,7 @@
 			<password-encoder ref="bCryptPasswordEncoder"></password-encoder>
 		</authentication-provider>
 	</authentication-manager>
-	<http use-expressions="true" auto-config="false"  authentication-manager-ref="authenticationManager">
+	<http use-expressions="true" auto-config="false" entry-point-ref="unauthorizedEntryPoint"  authentication-manager-ref="authenticationManager" create-session="never">
 		<http-basic />
 		
 
@@ -70,9 +70,9 @@
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://localhost:3306/Tutor" />
+		<beans:property name="url" value="${jdbc.databaseurl}" />
 		<beans:property name="username" value="${jdbc.username}"  />
 		<beans:property name="password" value="${jdbc.password}"  />
 	</beans:bean>
-
+<beans:bean id="unauthorizedEntryPoint" class="com.pmi.tutor.config.UnauthorizedEntryPoint" />
 </beans:beans>

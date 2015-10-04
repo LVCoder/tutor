@@ -13,7 +13,7 @@ var mainAccountsRequests = {
 				 if (data.enabled && !data.anomymous && data.anomymous != true) {
 						console.log("Enabled user");
 						$rootScope.header = "/protected/partials/header";
-						//$rootScope.home_path = "/protected/partials/home_content";
+						$rootScope.home_path = "/protected/partials/home_content";
 						//$rootScope.settings_navbar_path = "protected/partials/settings_navbar";
 						$rootScope.user = data;
 						$rootScope.authenticated = true;
@@ -25,8 +25,8 @@ var mainAccountsRequests = {
 							console.log("User is admin");
 						}
 					} else if (data.anonymous) {
-						$rootScope.header = "/public/partials/header";
-						//$rootScope.home_path = "/public/partials/home_content";
+						$rootScope.header = null;
+						$rootScope.home_path = "/public/partials/home_content";
 						$rootScope.authenticated = false;
 						console.log("User is anonymous");
 					}

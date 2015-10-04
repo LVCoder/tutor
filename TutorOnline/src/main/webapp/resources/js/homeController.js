@@ -1,7 +1,7 @@
 function HomeController($scope, $rootScope, $location, $http) {
-	$scope.$on('$viewContentLoaded', function() {
-
-
+	
+	$scope.finishLoading = function(){
+		if($("#content-slider")){
 			$("#content-slider").lightSlider({
                loop:true,
                keyPress:true,
@@ -10,7 +10,7 @@ function HomeController($scope, $rootScope, $location, $http) {
                pager: true,
                responsive: []
            });
-           
-		
-	})
+		}   
+	}
+	
 };

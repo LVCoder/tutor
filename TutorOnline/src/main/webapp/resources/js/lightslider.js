@@ -20,7 +20,7 @@
         prevHtml: '',
         nextHtml: '',
         rtl: false,
-        adaptiveHeight: false,
+        adaptiveHeight: true,
         vertical: false,
         verticalHeight: 500,
         vThumbWidth: 100,
@@ -34,7 +34,24 @@
         enableDrag: true,
         freeMove: true,
         swipeThreshold: 40,
-        responsive: [],
+        responsive: [
+			{
+			    breakpoint:600,
+			    settings: {
+			        item:2,
+			        slideMove:1,
+			        slideMargin:3,
+			      }
+				},
+				{
+	                breakpoint:400,
+	                settings: {
+	                    item:1,
+	                    slideMove:1
+	                  }
+	            }
+                     
+                     ],
         /* jshint ignore:start */
         onBeforeStart: function ($el) {},
         onSliderLoad: function ($el) {},
@@ -44,6 +61,7 @@
         onBeforePrevSlide: function ($el, scene) {}
         /* jshint ignore:end */
     };
+    
     $.fn.lightSlider = function (options) {
         if (this.length === 0) {
             return this;

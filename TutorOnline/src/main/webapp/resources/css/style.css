@@ -5,27 +5,26 @@
 h1,h2,h3,h4{
      font-weight: normal;
 }
-body{
+ body#index{
 background: rgb(247, 255, 249);   
 }
 
-header{
-     with:1346px;
+ header#index{
      height:80px;
      background: white;
 }
-header img{
+ header#index img{
      width:80px; 
-    float:left;
-    margin-left: 120px;
+    float:right;
+    margin-right: 8.915304606240713%/*120px;*/
 }
-header span{
-      margin-left:20px;
-    float:left;
+ header#index span{
+      margin-right:20px;
+    float:right;
     margin-top:25px;
     font-size: 20px;
 }
-header a{
+ header#index a{
     text-decoration: none;
     color: #484848;
     margin:0px 15px;
@@ -33,20 +32,20 @@ header a{
     font-weight: 400;
         
 }
-.signIn{
+#index .signIn{
  color:white;
 background: #37a2ac;
     padding: 9px 16px;
     border-radius: 18px;
     font-size: 12px;
 }
-nav{
-     float:right;
-    margin-right: 150px;
+#index nav{
+     float:left;
+    margin-left: 11.14413075780089%;/*150px;*/
     font-size:16px;
     margin-top: 27px;
 }
-.intro{
+.intro#index {
      background: #37a2ac;
    display: block;
     float:left;
@@ -54,61 +53,63 @@ nav{
     padding: 56px 0px;
    
 }
-.item{
+#index .item{
      width: 700px; 
      float:left;
      background: #37a2ac;
     margin-bottom: 20px;
 }
-.item img{
+#index .item img{
      margin:10px auto;
     width:100%;
-    height: 180px;
+    height: auto;
     overflow: hidden;
 }
-.item a{
+#index .item a{
      text-decoration: none;
     color:darkslategrey;
 }
-.content-slider h3 {
+#index .content-slider h3 {
     margin: 0;        
     padding: 10px 0;
     font-size:20px;
     font-weight: 400;
 		}
-.leftIntro{
+#index .leftIntro{
  padding:30px 50px; 
      background: #37a2ac;
 }
-.item p{
+#index .item p{
     margin-bottom: 15px;   
     
 }
-.item span{
+#index .item span{
      font-size: 20px;   
 }
-.rightIntro{
+#index .rightIntro{
      float: left;
-    width:500px;
+     width:37.14710252600297%;
+   max-width:500px;
     margin-left:20px;
      background: #37a2ac;
     color:white;
     margin-top: -20px;
+    text-align:right;
 }
-.rightIntro h2{
+#index .rightIntro h2{
      margin-bottom: 20px; 
     font-size:27px;
 }
-.rightIntro p{
+#index .rightIntro p{
      font-size:20px; 
     font-weight: 300;
 }
-.rightIntro a{
+#index .rightIntro a{
  margin-top: 20px;
-    float:left;
+    float:right;
     text-decoration: none;
 }
-.seeCourses{
+#index .seeCourses{
      font-size:17px;
     color:white;
     background: #1e7077;
@@ -116,42 +117,41 @@ nav{
     padding:8px 40px;
     
 }
-a.becomeTutor{
- margin-left: 10px;
+#index a.becomeTutor{
+ margin-right: 10px;
     text-decoration: underline;
     color: white;
     font-size:17px;
     padding: 8px 10px;
 }
-.main h1{
+ .main#index h1{
  text-align:  center;
     margin-top: 35px;
     margin-bottom: 35px;
     float:left;
     width: 100%;
 }
-#rightSlide{
+#index #rightSlide{
 	float:right;
 	height:100%;
-	width:674px;
 	background:white;
 	display:inline-block;
 	background:rgb(247, 255, 249);
-		padding-top:200px;
+		padding-top:100px;
 	}
-	#leftSlide{
+#index	#leftSlide{
 	float:left;
 	height:100%;
-	width:674px;
+	max-width:100%;
 	background:rgb(247, 255, 249);
 	display:inline-block;
 
 	}
-	#leftSlide img{
+	#index #leftSlide img{
 	float:left;
 	width:300px;
 	}
-	#leftSlide content{
+	#index #leftSlide content{
 	float:left;
 	display:inline-block;
 	color:black;
@@ -164,12 +164,11 @@ a.becomeTutor{
 	text-align:center;
 	padding:10px 15px;
 	}
-	#rightSlide img{
+	#index #rightSlide img{
 	float:right;
-	width:100px;
 	padding-right:80px;
 	}
-	#rightSlide content{
+	#index #rightSlide content{
 	float:right;
 	display:inline-block;
 	color:black;
@@ -182,21 +181,20 @@ a.becomeTutor{
 	text-align:center;
 	padding:10px 15px;
 	}
-	#leftSlide1{
+	#index #leftSlide1{
 	float:left;
 	height:100%;
-	width:674px;
+	max-width:100%;
 	background:rgb(247, 255, 249);
 	display:inline-block;
 	padding-top:100px;
 
 	}
-	#leftSlide1 img{
+	#index #leftSlide1 img{
 	float:left;
-	width:100px;
 	padding-left:180px;
 	}
-	#leftSlide1 content{
+	#index #leftSlide1 content{
 	float:left;
 	display:inline-block;
 	color:black;
@@ -209,21 +207,20 @@ a.becomeTutor{
 	text-align:center;
 	padding:10px 15px;
 	}
-		#leftSlide2{
+	#index	#leftSlide2{
 	float:left;
 	height:100%;
-	width:874px;
 	background:rgb(247, 255, 249);
 	display:inline-block;
-	padding-left:400px;
+	padding-left:29.71768202080238%;/*400px;*/
 
 	}
-	#leftSlide2 img{
+	#index #leftSlide2 img{
 	float:left;
 	width:150px;
 	padding-left:30px;
 	}
-	#leftSlide2 content{
+	#index #leftSlide2 content{
 	float:left;
 	display:inline-block;
 	color:black;
@@ -236,7 +233,7 @@ a.becomeTutor{
 	text-align:center;
 	padding:10px 15px;
 	}
-	#leftSlide2 span{
+	#index #leftSlide2 span{
 	color:#43cdc0;
 	font-style:none;
 	font-size:24px;
@@ -247,6 +244,7 @@ footer{
     width:100%;
     color:#d0d0d0;
     background: #08727c;
+    margin-top:40px;
 }
 footer a{
  color: #d0d0d0;   
@@ -254,8 +252,9 @@ footer a{
 }
 .leftFooter{
  float:left;
-    margin-left:100px;
-    width:600px;
+    margin-left:16.66666666666667%;/*100px*/
+    width:44.57652303120357%;
+    max-width:600px;
     margin-top: 20px;
     margin-bottom: 20px;
     line-height: 30px;
@@ -272,7 +271,8 @@ footer a{
 }
 .rightFooter{
  float:left;
-    width:500px;
+ width:37.14710252600297%;
+    max-width:500px;
 }
 .rights{
  float:left;
@@ -300,14 +300,15 @@ footer span{
 .logoDiv{
  width:100%;   
     float: left;
-    padding-left: 50px;
+    padding-left: 10%;
 }
 .rightFooter p{
  float:left;
     margin-left: 50px;
     font-size:20px;
     font-weight: 300;
-    width:300px;
+    max-width:300px;
+    width:60%;
 }
 .fileUpload {
     position: relative;
@@ -326,3 +327,298 @@ footer span{
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
+/*
+
+
+#reg .logo {
+    text-align: center;
+    color: darkgray;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    text-decoration: none;
+    font-weight: 300;
+    width: 400px;
+    clear: both;
+    margin-top: 100px;
+    padding-left: 10px;
+    
+}
+#reg .logo img{
+    width:80px;
+    float: left;
+    display: block;
+   
+        
+}
+#reg .logo span{
+  display: block;
+    float: left;
+     margin-top: 15px;
+    padding:0 10px;
+}
+#reg .tut{
+ margin-left:-10px;   
+}
+
+#reg .reg-form{
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width:500px;
+    border:none;
+}
+#reg .reg-fieldset{
+     border: none; 
+    margin: 0 auto;
+    min-width: 500px;
+}
+
+#reg .conf-fiedset{
+	padding-top:20px;
+}
+
+#reg input{
+ width:270px;
+    float: left;
+    height: 30px;
+    margin-top:10px;
+    margin-right:-6px;
+    border: 1px solid #d8d7d7;
+    padding-left: 7px;
+    padding-right: -15px;
+    font-size: 17px;
+    
+    
+}
+#reg input:focus{
+ box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+#reg label{
+     font-size: 18px;
+    padding:5px 10px;
+    margin-top:12px;
+    float:left;
+}
+#reg .createAc{
+ width:270px;
+    float: left;
+}
+#reg button{
+ display: block;
+    margin: 0 auto;
+    width:210px;
+    padding: 9px 0;
+    border:none;
+    background: #37a2ac;
+    color:white;
+    border-radius: 17px;
+    font-size:16px;
+    font-weight: 400;
+}
+#reg form a{   
+   width: 100%;
+    float: left;
+    text-align: center;
+    color:#607D8B;
+    font-size: 14px;
+    margin-top: 10px;
+}
+#reg form a:after{
+     content: "";
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("../images/facebook3.png");
+    position: absolute;
+    margin-left:5px;
+    margin-top: -3px;
+    display: inline-block;
+    
+}
+#reg #pasRecovery{
+ float:left;
+ font-size: 12px;
+     text-align: left;
+    text-decoration: none;
+    color: gray;
+    margin-bottom:15px;
+}
+#reg #pasRecovery:after{
+    content:"";
+    background-image: none;
+   
+    
+}
+#reg #pasRecovery:before{
+    content: "";
+   width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+    background-image: url("../images/questions1.png");
+    margin-left: 10px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+      
+}
+#reg #pasRecovery:hover{
+     text-decoration: underline;
+}
+*/
+@media only screen and (max-width : 1245px){
+	#index .item{
+		width:600px;
+	}	
+	
+	#index .rightIntro p{
+		font-size:120%;
+	}
+	#index .content-slider h3{
+		font-size:1.2em;
+	}
+	#index .item p{
+		font-size:15px;
+	}
+	#index .item span{
+		font-size:18px;
+	}
+	#index .seeCourses{
+		font-size:16px;
+	}
+	#index a.becomeTutor{
+		font-size:16px;
+		padding: 8px 3px;
+	}
+	
+}
+@media only screen and (max-width : 1095px){
+		#index .item {
+    		width: 500px;
+	}
+	#index .rightIntro p{
+		font-size:110%;
+	}
+	#index .content-slider h3{
+		font-size:1.1em;
+	}
+	#index .item p{
+		font-size:14px;
+	}
+	#index .item span{
+		font-size:17px;
+	}
+	#index .seeCourses{
+		font-size:15px;
+		padding: 8px 18px;
+	}
+	#index a.becomeTutor{
+		font-size:15px;
+		padding: 8px 1px;
+	}
+}
+@media only screen and (max-width : 940px){
+		#index .item{
+			width:100%;
+			float:none;
+			margin: 0 auto;
+		}
+		#index .rightIntro{
+			width:80%;
+			margin:0 auto;
+			float:none;
+		}
+			#index .content-slider h3{
+		font-size:1.2em;
+	}
+	#index .item p{
+		font-size:100%;
+	}
+	#index .item span{
+		font-size:120%;
+	}
+	#index .seeCourses{
+		font-size:110%;
+		padding: 8px 35px;
+	}
+	#index a.becomeTutor{
+		font-size:110%;
+		padding: 8px 1px;
+	}
+		
+	}
+	@media only screen and (max-width : 786px){
+		footer span{
+			display:none;
+		}
+		#index	#leftSlide2{
+			padding-left:10%;
+		}
+		#index #leftSlide img{
+			width:250px;
+		}
+		#index #leftSlide content,
+		#index #rightSlide content ,
+		#index #leftSlide1 content,
+		#index #leftSlide2  content{
+			font-size:20px;
+			width:32.28826151560178%;
+		}
+		#index #rightSlide img ,
+		#index #leftSlide1 img,
+		#index #leftSlide2  img{
+			width:100px;
+		}
+		#index #leftSlide1 img{
+			padding-left:13.37295690936107%;
+		}
+		
+	}
+	@media only screen and (max-width : 660px){
+		#index .signIn{
+		 padding: 9px 16px;
+		 font-size: 11px;
+}
+#index nav{
+    font-size:16px;
+    margin-top: 27px;
+}
+header#index img {
+    width: 60px;
+    float: left;
+    margin-left: 8.915304606240713%/*120px;*/;
+    margin-top:10px;
+}
+header#index span {
+    margin-left: 20px;
+    float: left;
+    margin-top: 28px;
+    font-size: 16px;
+}
+header#index a{
+	margin: 0px 6px;
+}
+	}
+	
+	@media only screen and (max-width : 550px){
+		header#index span{
+			display:none;
+		}
+		#index #leftSlide content,
+		#index #rightSlide content ,
+		#index #leftSlide1 content,
+		#index #leftSlide2  content{
+			font-size:16px;
+			width:35%;
+		}
+		#index #leftSlide img{
+			width:200px;
+		}
+		#index #leftSlide2 span{
+			font-size:18px;
+		}
+	}

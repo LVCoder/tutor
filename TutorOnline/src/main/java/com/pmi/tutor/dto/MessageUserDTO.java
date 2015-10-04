@@ -5,6 +5,7 @@ public class MessageUserDTO {
 	private String username;
 	private Long userId;
 	private Long unreadedMessageQuantity;
+	private String imagePath;
 	public String getUsername() {
 		return username;
 	}
@@ -23,6 +24,13 @@ public class MessageUserDTO {
 	public void setUnreadedMessageQuantity(Long unreadedMessageQuantity) {
 		this.unreadedMessageQuantity = unreadedMessageQuantity;
 	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	
 
 	
 	

@@ -26,7 +26,7 @@ function SignInController($http, $scope, $rootScope,$location, Facebook){
 				} else if (data.enabled) {
 					toastr.clear();
 					console.log("User enabled auth " + data);
-					$location.path("/user_home");
+					$location.path("/");
 					//$rootScope.menu_path = "/protected/partials/user_navbar";
 					//$rootScope.home_path = "/protected/partials/home_content";
 					//$rootScope.settings_navbar_path = "protected/partials/settings_navbar";

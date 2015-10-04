@@ -1,23 +1,39 @@
-<div class = "col-sm-12" ng-controller="MessagingController">
-<div class = "col-sm-2"></div>
-<div class = "col-sm-8">
-<div class = "row" style="height:500px;  border: 2px solid grey; ">
-<div id="chat" class = "col-sm-8" style = "height:100%; border-right: 2px solid grey; overflow-y:scroll; ">
-<div class="row" ng-repeat="message in messages track by $index" on-finish-render="ngRepeatFinished">
-<span ng-show="message.userFromId==user.id" style="font-weight:bold">{{user.username}}</span>
-<span ng-show="message.userFromId!=user.id" style="font-weight:bold">{{mainUser.username}}</span>
-<span>{{message.text}}  {{message.creationDate| date:'dd.MM.yyyy hh:mm'}}</span>
-</div>
-</div>
-<div class = "col-sm-4">
-<div class="row" ng-repeat="user in users track by $index">
-<a ng-click="getMessages(user);">{{user.username}}  </a>
-</div></div>
-</div>
-<div class = "row">
-<input type="text" ng-model="message" ng-keyup="messageKeyup($event);">
-<button ng-click="sendMessage();">Send</button>
-</div>
-</div>
-<div class = "col-sm-2"></div>
-</div>
+<div ng-controller="MessagingController">
+<div class="messageHead">
+            <div class = "messageHeadMain">
+                <h1>Messages</h1>
+                <h2>{{mainUser.username}}</h2>
+               
+            </div>
+        </div>
+        
+    <div id="content">
+        <div class="sendersBlock" >
+        <div ng-repeat="user in users track by $index" >
+           <a href="" id="oneMessage" ng-class = "active[$index]"    ng-click="getMessages(user);">
+                <img src="{{user.imagePath}}" alt="">
+                <p id = "sendersName">{{user.username}}</p>
+                
+              
+            </a>
+            </div>
+            
+        </div>
+        <div class="messagesBlock" id="chat">
+          <div class="sentMessage" ng-repeat="message in messages track by $index" on-finish-render="ngRepeatFinished">
+               <img src="{{user.avatarPath}}" ng-show="message.userFromId==user.id" alt="" class="senderAva">
+               <img src="{{mainUser.imagePath}}" ng-show="message.userFromId!=user.id" alt="" class="senderAva">
+                <p id = "messageSender" ng-show="message.userFromId==user.id">{{user.username}}</p>
+                 <p id = "messageSender" ng-show="message.userFromId!=user.id">{{mainUser.username}}</p>
+                <span id="dateOfSending">{{message.creationDate| date:'dd.MM.yyyy hh:mm'}}</span>
+                <p id = "messageText">{{message.text}}</p>
+            </div>
+           
+        </div>
+        <form action="" id="sendMessageForm">
+            <textarea name="messageInput" id="messageInput" cols="30" rows="10" ng-model="message" ng-keyup="messageKeyup($event);"></textarea>
+            <button ng-click="sendMessage();" id="sendMessageBut">Send</button>
+            
+        </form>
+    </div>
+    </div>

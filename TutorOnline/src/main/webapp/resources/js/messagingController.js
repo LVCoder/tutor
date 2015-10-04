@@ -1,6 +1,7 @@
 function MessagingController ($http, $scope, $rootScope, $location){
 	 
 	$scope.$on('$viewContentLoaded', function() {
+		$scope.active = [];
 		$scope.messages = [];
 		getMessagingInformation(-1);
 		connect();
@@ -11,6 +12,7 @@ function MessagingController ($http, $scope, $rootScope, $location){
 				$scope.users = result.users;
 				$scope.mainUser = result.mainUser;
 				$scope.messages = result.messages;
+				setActive($scope.mainUser.userId)
 				
 			}
 		})
@@ -25,7 +27,16 @@ function MessagingController ($http, $scope, $rootScope, $location){
 		}
 		
 	}
-	
+	function setActive(userId){
+		$scope.active = [];
+		for (i=0; i<$scope.users.length; i++){
+			if ($scope.users[i].userId==userId){
+				$scope.active.push('active');
+			} else {
+				$scope.active.push('');
+			}
+		}
+	}
 	$scope.getMessages = function(user){
 		getMessagingInformation(user.userId);
 	}
@@ -42,7 +53,7 @@ function MessagingController ($http, $scope, $rootScope, $location){
 	
 	function checkMessage(message){
 		console.log(message.indexOf('@'));
-		if (message.indexOf('@')>0||message.indexOf('skype')>0||message.indexOf('Skype')>0||message.indexOf('SKYPE')>0){
+		if (message.indexOf('@')>=0||message.indexOf('skype')>=0||message.indexOf('Skype')>=0||message.indexOf('SKYPE')>=0){
 			return false;
 		}
 

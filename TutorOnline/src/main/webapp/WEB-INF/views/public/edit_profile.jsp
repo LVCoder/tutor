@@ -1,13 +1,10 @@
 
-<div ng-controller="EditProfileController">
-	<a href="" class="logo"> <span class="tut">Tutoring</span> <img
-		src="resources/images/logo.svg" alt="logo"> <span class="port">Portal</span>
-	</a>
+<div ng-controller="EditProfileController" >
 
-	<form ng-submit="edit();">
+	<form ng-submit="edit();" id="reg">
 	<div class = "row">
-	<div class="col-sm-4">
-		<div class="row conf-fiedset" style="padding-top:100px;">
+	<div class="col-sm-12">
+		<div class="row conf-fiedset" style="padding-top:100px; padding-left:400px;">
 			<input type="text" id="_first_name" 
 				ng-model="firstName"><label for="_first_name">First
 				Name</label> <input type="text" id="_last_name" 

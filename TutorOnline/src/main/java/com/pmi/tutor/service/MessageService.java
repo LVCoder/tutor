@@ -37,6 +37,7 @@ public class MessageService {
 			MessageUserDTO mainUserDTO = new MessageUserDTO();
 			mainUserDTO.setUserId(mainUser.getId());
 			mainUserDTO.setUsername(mainUser.getUsername());
+			mainUserDTO.setImagePath(mainUser.getAvatarPath());
 			result.setMainUser(mainUserDTO);
 			List<Message> messages = messageDAO.getMessages(
 					user, mainUser);
@@ -66,6 +67,7 @@ public class MessageService {
 		result.setUsername(secondUser.getUsername());
 		result.setUnreadedMessageQuantity(messageDAO.getUnreadedMessageCount(
 				firstUser, secondUser));
+		result.setImagePath(secondUser.getAvatarPath());
 		return result;
 
 	}

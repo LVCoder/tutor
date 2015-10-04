@@ -6,7 +6,7 @@
   js.src = "//connect.facebook.net/en_US/sdk.js";;
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div ng-controller="SignInController">
+<div ng-controller="SignInController" id = "reg">
  <a href="" class="logo">
        <span class="tut">Tutoring</span>  <img src="resources/images/logo.svg" alt="logo"> <span  class = "port">Portal</span>
     </a>

@@ -12,14 +12,14 @@
                     <a href=""><span>12</span>Polish</a>
                 </div>
                 <div class="buttons">
-                    <a href="#">Write Max a message</a>
-                    <a href="#">Follow</a>
+                    <a href="#/messaging">Messages</a>
+                    <a href="#/edit_profile">Edit</a>
                     <a href="#">Ask</a>
                 </div>
             </div>
             <div class="rightMain">
-                <img id = "ava" src="resources/images/ava.jpg" alt="">
-                <p id = "username">Max Hladysh</p>
+                <img id = "ava" src="{{user.avatarPath}}" alt="">
+                <p id = "username">{{user.firstName}} {{user.lastName}}</p>
             </div>
         </div>
         <div class="infoBlock">

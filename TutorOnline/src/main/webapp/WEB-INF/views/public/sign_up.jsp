@@ -1,4 +1,4 @@
- <div ng-controller="SignUpController">
+ <div ng-controller="SignUpController" id = "reg">
   <a href="" class="logo">
        <span class="tut">Tutoring</span>  <img src="resources/images/logo.svg" alt="logo"> <span  class = "port">Portal</span>
     </a>

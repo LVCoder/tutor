@@ -7,12 +7,12 @@
  <title>Tutoring Portal</title>
 
 <!-- Styles -->
-<link rel="stylesheet"  href="resources/css/bootstrap.css"/>
+   <link rel="stylesheet"  href="resources/css/bootstrap.css"/>
         <link rel="stylesheet"  href="resources/css/lightslider.css"/>
         <link rel="stylesheet"  href="resources/css/style.css"/>
-    <link rel="stylesheet"  href="resources/css/reg.css"/>
     <link rel="stylesheet"  href="resources/toastr/toastr.min.css"/>
     <link rel="stylesheet"  href="resources/css/autocomplete.css"/>
+    <link rel="stylesheet"  href="resources/css/main.css"/>
 <!-- Angular! -->
 
 <script type="text/javascript" src="resources/angularjs/angular.js"></script>
@@ -78,10 +78,9 @@
 
 </head>
 <!--  class="page-header-fixed" -->
-<body ng-app="main" class="blue" ng-cloak>
-	 <header ng-include="header">
-       
-    </header>
+<body ng-app="main"  class="blue" ng-cloak >
+	 <div ng-include="header">
+    </div> 
 	<div class="" ng-view></div>
 	 <footer>
         <div class="leftFooter">

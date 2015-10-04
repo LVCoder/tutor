@@ -1,16 +1,17 @@
 function SearchController($http, $scope, $rootScope, $location){
 	$scope.$on('$viewContentLoaded', function() {
 		$scope.search_query="";
-		$scope.users=[];
+		
 	})
 	
 	$scope.searchUsers= function(){
+		$location.path('/search');
 		if ($scope.search_query&&$scope.search_query.trim()!=""){
 			$http.get('protected/user/search?query='+$scope.search_query).success(function(result){
 				if (result&&result.length>0){
-					$scope.users = result;
+					$rootScope.users = result;
 				} else {
-					$scope.users = [];
+					$rootScope.users = [];
 					toastr.warning( "No results");
 				}
 			});
@@ -18,7 +19,7 @@ function SearchController($http, $scope, $rootScope, $location){
 	}
 	
 	$scope.openSendMessage = function(index){
-		$scope.userTo = $scope.users[index];
+		$scope.userTo = $rootScope.users[index];
 		$('#sendMessageModal').modal('show');
 	}
 	
